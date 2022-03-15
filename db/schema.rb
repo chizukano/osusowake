@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2022_03_15_001726) do
   create_table "cooking_sessions", force: :cascade do |t|
     t.integer "max_portions"
     t.datetime "start_at"
-    t.datetime "ends_at"
+    t.datetime "end_at"
     t.bigint "meal_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
