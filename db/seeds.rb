@@ -17,11 +17,11 @@ users = [user1, user2, user3]
 
 puts "---creating fake chefs---"
 chef1 = Chef.create!(
-  address: "Amsterdam 300a, Hipódromo, Cuauhtémoc, 06100 Ciudad de México, CDMX",
+  address: "Amsterdam 300a, CDMX",
   user: user1
 )
 chef2 = Chef.create!(
-  address: "Guanajuato 165, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX",
+  address: "Guanajuato 165, CDMX",
   user: user2
 )
 puts "---done---"
@@ -39,13 +39,76 @@ end
 puts "---done---"
 
 cooking_sessions = []
-puts "---creating fake cooking_sessions---"
-10.times do
+puts "---creating fake past cooking sessions---"
+3.times do
+  meal = meals.sample
+  chef = meal.chef
   cooking_sessions << CookingSession.create!(
     max_portions: rand(2..10),
-    start_at: Faker::Time.forward(days: 2, period: :morning, format: :long),
-    end_at: Faker::Time.forward(days: 2, period: :afternoon, format: :long),
-    meal: meals.sample
+    address: chef.address,
+    longitude: chef.longitude,
+    latitude: chef.latitude,
+    start_at: Faker::Time.backward(days: 1, period: :morning, format: :long),
+    end_at: Faker::Time.backward(days: 1, period: :afternoon, format: :long),
+    meal: meal
+  )
+end
+3.times do
+  meal = meals.sample
+  chef = meal.chef
+  cooking_sessions << CookingSession.create!(
+    max_portions: rand(2..10),
+    address: chef.address,
+    longitude: chef.longitude,
+    latitude: chef.latitude,
+    start_at: Faker::Time.backward(days: 1, period: :afternoon, format: :long),
+    end_at: Faker::Time.backward(days: 1, period: :evening, format: :long),
+    meal: meal
+  )
+end
+puts "---done---"
+
+puts "---creating fake near future cooking sessions---"
+10.times do
+  meal = meals.sample
+  chef = meal.chef
+  cooking_sessions << CookingSession.create!(
+    max_portions: rand(2..10),
+    address: chef.address,
+    longitude: chef.longitude,
+    latitude: chef.latitude,
+    start_at: Time.current + rand(2..3).hours,
+    end_at: Time.current + rand(4..5).hours,
+    meal: meal
+  )
+end
+puts "---done---"
+
+puts "---creating fake future cooking sessions---"
+3.times do
+  meal = meals.sample
+  chef = meal.chef
+  cooking_sessions << CookingSession.create!(
+    max_portions: rand(2..10),
+    address: chef.address,
+    longitude: chef.longitude,
+    latitude: chef.latitude,
+    start_at: Faker::Time.forward(days: 1, period: :morning, format: :long),
+    end_at: Faker::Time.forward(days: 1, period: :afternoon, format: :long),
+    meal: meal
+  )
+end
+3.times do
+  meal = meals.sample
+  chef = meal.chef
+  cooking_sessions << CookingSession.create!(
+    max_portions: rand(2..10),
+    address: chef.address,
+    longitude: chef.longitude,
+    latitude: chef.latitude,
+    start_at: Faker::Time.forward(days: 1, period: :afternoon, format: :long),
+    end_at: Faker::Time.forward(days: 1, period: :evening, format: :long),
+    meal: meal
   )
 end
 puts "---done---"
