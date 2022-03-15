@@ -1,6 +1,8 @@
 <h1>Cooking Sessions page</h1>
 
 <!-- app/views/reviews/new.html.erb -->
+<p>Meal being cooked: <%= @cooking_session.meal.name %></p>
+<p>Meal description: <%= @cooking_session.meal.description %></p>
 <p>Max Portions: <%= @cooking_session.max_portions  %></p>
 <p> Start At <%= @cooking_session.start_at %></p>
 <p> End At <%= @cooking_session.end_at %></p>
