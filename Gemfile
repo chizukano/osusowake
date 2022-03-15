@@ -33,6 +33,8 @@ gem 'font-awesome-sass'
 gem 'simple_form', github: 'heartcombo/simple_form'
 gem 'devise'
 
+gem 'geocoder'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
