@@ -6,6 +6,6 @@ class CookingSession < ApplicationRecord
   # no need for after validate callback for geocode, we`ll add lat and lng on create
 
   def chef_name
-    meal.chef.user.email
+    meal.chef.user.username
   end
 end
