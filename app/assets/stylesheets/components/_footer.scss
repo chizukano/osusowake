@@ -1,0 +1,25 @@
+.footer {
+  background: #E5F2E3;
+  color: #4D6649;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+
+  a {
+    color: #4D6649;
+    opacity: 0.15;
+    text-decoration: none;
+    font-size: 24px;
+    padding: 0px 10px;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.footer-text {
+  font-size: 15px;
+}
