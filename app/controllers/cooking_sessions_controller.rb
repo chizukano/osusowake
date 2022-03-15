@@ -1,5 +1,5 @@
 class CookingSessionsController < ApplicationController
   def index
-    @cooking_sessions = CookingSessions.all
+    @cooking_sessions = CookingSession.all
   end
 end

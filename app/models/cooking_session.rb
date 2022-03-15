@@ -4,4 +4,8 @@ class CookingSession < ApplicationRecord
 
   validates :latitude, :longitude, presence: true
   # no need for after validate callback for geocode, we`ll add lat and lng on create
+
+  def chef_name
+    meal.chef.user.email
+  end
 end

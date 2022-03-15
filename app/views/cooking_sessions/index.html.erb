@@ -1,0 +1,19 @@
+<h1>Check out these meals your neighbors are cooking!</h1>
+<br>
+<div class="container">
+  <div class="row">
+    <% @cooking_sessions.each do |cooking_session| %>
+      <div class="col-4">
+        <div class="card mb-3">
+          <img class="card-img-top" src="..." alt="Meal">
+          <div class="card-body">
+            <h5 class="card-title"><%= cooking_session.meal.name %></h5>
+            <p class="card-text"><%= cooking_session.chef_name %></p>
+            <p class="card-text"><%= cooking_session.max_portions %></p>
+            <p class="card-text"><%= cooking_session.end_at %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
