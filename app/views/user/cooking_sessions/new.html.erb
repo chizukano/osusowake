@@ -1,0 +1,11 @@
+<div class="container">
+  <h5>Let's schedule a cooking session!</h5>
+<%# use pundit to prevent non-chefs from making a meal %>
+  <%= simple_form_for [@cooking_session], url: user_chef_cooking_session_path do |f| %>
+    <%= f.association :meal, collection: current_user.chef.meals, label: "Select from dishes you cooked in the past" %>
+    <%= f.input :max_portions, label: "Select number of portions:" %>
+    <%= f.input :end_at, label: "Will be prepared by" %>
+<%# default format for simpleform is ugly. We might be able to use https://datetime-picker-input.herokuapp.com/ %>
+    <%= f.submit "Submit", class: "btn btn-primary mb-3" %>
+  <% end %>
+</div>

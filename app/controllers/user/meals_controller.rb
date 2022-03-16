@@ -6,10 +6,11 @@ class User::MealsController < ApplicationController
 
   def create
     @meal = Meal.new(meal_params)
-    @chef = current_user
+    @meal.chef = current_user.chef
 
     if @meal.save
-      redirect_to meals_path
+      redirect_to cooking_sessions_path
+      # tentative path that redirects to index of cooking sessions
     else
       render :new
     end
