@@ -6,8 +6,8 @@
   <div class="card mb-3">
     <img class="card-img-top" src="..." alt="Meal-image">
     <div class="card-body">
-      <h5 class="card-title"><%= @cooking_session.meal.name %></h5>
-      <p class="card-text">Prepared by <%= @cooking_session.meal.chef.user.username %></p>
+      <h5 class="card-title"><%= @cooking_session.meal_name %></h5>
+      <p class="card-text">Prepared by <%= @cooking_session.chef_name %></p>
       <p class="card-text">Will be ready in <%= distance_of_time_in_words_to_now(@cooking_session.end_at) %></p>
     </div>
   </div>

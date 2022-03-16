@@ -8,4 +8,8 @@ class CookingSession < ApplicationRecord
   def chef_name
     meal.chef.user.username
   end
+
+  def meal_name
+    meal.name
+  end
 end
