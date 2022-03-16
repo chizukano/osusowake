@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  # cooking_sessions/:cooking_session_id/...
   resources :cooking_sessions, only: [:show, :new] do
-    resources :reservations, only: [:create]
+    # .../reservations
+    resources :reservations, only: [:create, :show]
   end
+  # reservations/:id
+  resources :reservations, only: [:show]
 
   devise_for :users
   root to: 'pages#home'
