@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  resources :cooking_sessions, only: [:show]
-
   devise_for :users
   root to: 'pages#home'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :cooking_sessions, only: %i[index]
+  resources :cooking_sessions, only: %i[index show]
+
+  namespace :user do
+    resource :chef, only: %i[new create show]
+  end
 end
