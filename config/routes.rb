@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :cooking_sessions, only: [:show]
+  resources :cooking_sessions, only: [:show, :new] do
+    resources :reservations, only: [:create]
+  end
 
   devise_for :users
   root to: 'pages#home'
