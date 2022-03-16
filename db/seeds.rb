@@ -1,14 +1,17 @@
 puts "---creating fake users---"
 default_password = "123456"
 user1 = User.create!(
+  username: "User1",
   email: "user1@users.com",
   password: default_password
 )
 user2 = User.create!(
+  username: "User2",
   email: "user2@users.com",
   password: default_password
 )
 user3 = User.create!(
+  username: "User3",
   email: "user3@users.com",
   password: default_password
 )

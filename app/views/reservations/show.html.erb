@@ -1,0 +1,15 @@
+<div class="container">
+  <h2>Thank you for your order, <%= @reservation.user.username %>!</h2>
+  <p>Your order number is <strong><%= @reservation.id  %></strong></p>
+  <br>
+  <h4>Order Summary:</h4>
+  <div class="card mb-3">
+    <img class="card-img-top" src="..." alt="Meal-image">
+    <div class="card-body">
+      <h5 class="card-title"><%= @cooking_session.meal.name %></h5>
+      <p class="card-text">Prepared by <%= @cooking_session.meal.chef.user.username %></p>
+      <p class="card-text">Will be ready in <%= distance_of_time_in_words_to_now(@cooking_session.end_at) %></p>
+    </div>
+  </div>
+  <%= link_to "Keep browsing", cooking_sessions_path, class: "btn btn-outline-success" %>
+</div>
