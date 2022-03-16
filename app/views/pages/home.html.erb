@@ -2,7 +2,19 @@
   <div class="container">
     <h1><strong>OSUSOWAKE</strong></h1>
     <p>Experience unique and homemade meals from your neighbors</p>
-    <a class="btn btn-flat" href="#">Search</a>
+
+    <%= simple_form_for :search, url: cooking_sessions_path, method: :get do |f| %>
+      <%= f.input :query,
+        placeholder: "Type your location",
+        label: false
+      %>
+      <%= f.input :max_distance,
+        label: "Select max. distance:",
+        collection: { "5km" => 5, "10km" => 10, "20km" => 20 },
+        as: :radio_buttons
+      %>
+      <%= submit_tag "Search", class: "btn btn-flat" %>
+    <% end %>
   </div>
 </div>
 
