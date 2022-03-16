@@ -10,7 +10,10 @@
             <h5 class="card-title"><%= cooking_session.meal.name %></h5>
             <p class="card-text"><%= cooking_session.chef_name %></p>
             <p class="card-text"><%= cooking_session.max_portions %></p>
-            <p class="card-text"><%= cooking_session.end_at %></p>
+            <p class="card-text">Ready in <%= distance_of_time_in_words_to_now(cooking_session.end_at) %></p>
+            <% if @search_result.present? %>
+              <p class="card-text"><%= cooking_session.distance_to(@search_result).round(2) %>km away</p>
+            <% end  %>
           </div>
         </div>
       </div>
