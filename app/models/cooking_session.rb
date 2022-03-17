@@ -1,5 +1,6 @@
 class CookingSession < ApplicationRecord
   belongs_to :meal
+  has_many :reservations
   geocoded_by :address
 
   validates :latitude, :longitude, presence: true
@@ -15,5 +16,9 @@ class CookingSession < ApplicationRecord
 
   def meal_name
     meal.name
+  end
+
+  def portions_left
+    max_portions - reservations.sum(:portion_count)
   end
 end

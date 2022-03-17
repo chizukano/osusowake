@@ -1,10 +1,12 @@
 <%# POST cooking_sessions/:cs_id/reservations %>
 <div class ="container">
+
   <div class="row">
     <div class="col-6">
       <h1>Cooking Sessions page</h1>
       <p>Meal being cooked: <%= @cooking_session.meal.name %></p>
       <p>Meal description: <%= @cooking_session.meal.description %></p>
+       <p>Portions left: <%= @cooking_session.portions_left  %></p>
       <P>Pick up meal in &nbsp<%=  distance_of_time_in_words_to_now(@cooking_session.end_at) %></P>
 
     </div>
@@ -12,11 +14,12 @@
       <%= simple_form_for [@cooking_session, @reservation] do |f| %>
         <h2 class="border-bottom">Book now!</h2>
         <p>Max Portions: <%= @cooking_session.max_portions  %></p>
-        <%= f.input :portion_count, input_html: { min: 1 } %>
+        <%= f.input :portion_count, input_html: { min: 0 } %>
         <%= f.submit "Confirm booking" %>
       <% end %>
 
     </div>
 
   </div>
+
 </div>
