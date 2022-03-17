@@ -9,8 +9,7 @@ class User::MealsController < ApplicationController
     @meal.chef = current_user.chef
 
     if @meal.save
-      redirect_to cooking_sessions_path
-      # tentative path that redirects to index of cooking sessions
+      redirect_to new_user_chef_cooking_session_path
     else
       render :new
     end
