@@ -7,7 +7,7 @@ user1 = User.create!(
 )
 user2 = User.create!(
   username: "Brianna",
-  email: "brianna2@users.com",
+  email: "brianna@users.com",
   password: default_password
 )
 user3 = User.create!(
@@ -45,20 +45,22 @@ meal_names = ["Chicken Butter Curry", "Caesar Salad", "Chicken Ramen", "Green Sa
               "Arugula Mozzarella Pizza", "Chocolate Donuts", "Cauliflower Dip"
               ]
 
-meals = meal_names.map do |meal_name|
-  file2 = FIle.open("db/support/#{meal_name.parameterize}.jpg")
+meals = []
+meal_names.map do |meal_name|
+  file2 = File.open("db/support/#{meal_name.parameterize}.jpg")
   meal = Meal.new(
     name: meal_name,
     description: Faker::Food.description,
     chef: chefs.sample
   )
-  meal.photo.attach(io: file, filename: "#{meal_name.parameterize}.jpg", content_type: 'image/jpg')
-  gadget.save!
+  meal.photo.attach(io: file2, filename: "#{meal_name.parameterize}.jpg", content_type: 'image/jpg')
+  meal.save!
+  meals << meal
 end
 puts "---done---"
 
-cooking_sessions = []
 puts "---creating fake past cooking sessions---"
+cooking_sessions = []
 3.times do
   meal = meals.sample
   chef = meal.chef
