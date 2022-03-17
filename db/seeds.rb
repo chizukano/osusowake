@@ -1,22 +1,28 @@
 puts "---creating fake users---"
 default_password = "123456"
 user1 = User.create!(
-  username: "User1",
-  email: "user1@users.com",
+  username: "David",
+  email: "david@users.com",
   password: default_password
 )
 user2 = User.create!(
-  username: "User2",
-  email: "user2@users.com",
+  username: "Brianna",
+  email: "brianna@users.com",
   password: default_password
 )
 user3 = User.create!(
-  username: "User3",
-  email: "user3@users.com",
+  username: "Chizu",
+  email: "chizu@users.com",
   password: default_password
 )
-puts "---done---"
 users = [user1, user2, user3]
+
+users.map do |user|
+  file = File.open(("db/support/#{user_username.parameterize}.jpg"))
+  user.photo.attach(io: file, filename: "#{user_username.parameterize}.jpg", content_type: 'image/jpg')
+  user.save!
+end
+puts "---done---"
 
 puts "---creating fake chefs---"
 chef1 = Chef.create!(

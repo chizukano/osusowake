@@ -5,8 +5,9 @@
     <% @cooking_sessions.each do |cooking_session| %>
       <div class="col-4">
         <div class="card mb-3">
-          <img class="card-img-top" src="..." alt="Meal">
+          <%# <img class="card-img-top" src="..." alt="Meal"> %>
           <div class="card-body">
+            <h5 class="card-title"><%= cooking_session.meal.photo.key %></h5>
             <h5 class="card-title"><%= cooking_session.meal.name %></h5>
             <p class="card-text"><%= cooking_session.chef_name %></p>
             <p class="card-text"><%= cooking_session.max_portions %></p>
