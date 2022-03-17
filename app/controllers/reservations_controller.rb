@@ -1,9 +1,4 @@
 class ReservationsController < ApplicationController
-  # POST /cooking_sessions/5/reservations
-
-
-  # POST /cooking_sessions/:cooking_session_id/reservations
-  # params => {cooking_session_id: 5}
   def create
     @cooking_session = CookingSession.find(params[:cooking_session_id])
     @reservation = Reservation.new(reservation_params)
@@ -18,8 +13,8 @@ class ReservationsController < ApplicationController
   end
 
   def show
-     @reservation = CookingSession.find(params[:id])
-    
+    @reservation = Reservation.find(params[:id])
+    @cooking_session = @reservation.cooking_session
   end
 
   private
