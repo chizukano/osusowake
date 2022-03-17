@@ -16,6 +16,7 @@ class User::ChefsController < ApplicationController
   end
 
   def show
+    @chef = current_user.chef
   end
 
   private
