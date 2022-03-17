@@ -1,0 +1,10 @@
+<div class="container">
+<h1>What are you cooking?</h1>
+<h5>Let's add a new dish to your Osusowake list!</h5>
+<%# use pundit to prevent non-chefs from making a meal %>
+  <%= simple_form_for [@meal], url: user_chef_meal_path do |f| %>
+    <%= f.input :name, placeholder: "Name of your dish", label: false %>
+    <%= f.input :description, placeholder: "brief description of your dish", as: :text, label: false %>
+    <%= f.submit "Submit", class: "btn btn-primary mb-3" %>
+  <% end %>
+</div>
