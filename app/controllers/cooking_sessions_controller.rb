@@ -1,6 +1,7 @@
 class CookingSessionsController < ApplicationController
   def show
     @cooking_session = CookingSession.find(params[:id])
+    @reservation = Reservation.new
   end
 
   def index
@@ -28,5 +29,9 @@ class CookingSessionsController < ApplicationController
     redirect_to root_path, notice: "Invalid address." if best_result.nil?
 
     [best_result.latitude, best_result.longitude]
+  end
+
+  def new
+    @cooking_sessions = @Cooking_session.new
   end
 end
