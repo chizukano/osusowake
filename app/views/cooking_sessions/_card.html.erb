@@ -1,4 +1,4 @@
-<div class="card mb-3">
+<%= link_to cooking_session, class: "card mb-3 text-decoration-none text-black" do %>
   <div class="pos-r">
     <img class="card-img-top" src="https://place-hold.it/215x150" alt="Meal">
   </div>
@@ -16,4 +16,4 @@
       <%= cooking_session.max_portions %> <span class=" small">portions left</span>
     </div>
   </div>
-</div>
+<% end %>

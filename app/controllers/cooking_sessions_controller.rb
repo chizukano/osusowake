@@ -1,4 +1,6 @@
 class CookingSessionsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[show index]
+
   def show
     @cooking_session = CookingSession.find(params[:id])
     @reservation = Reservation.new
