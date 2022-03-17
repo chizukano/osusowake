@@ -1,7 +1,7 @@
 <div class="container py-3">
   <h1 class="text-center mb-3">Ready Soon</h1>
   <div class="row">
-    <% @cooking_sessions.each do |cooking_session| %>
+    <% @cooking_sessions.upcoming.limit(6).each do |cooking_session| %>
       <div class="col-4">
         <%= render "cooking_sessions/card", cooking_session: cooking_session %>
       </div>

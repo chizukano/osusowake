@@ -28,7 +28,7 @@ class CookingSessionsController < ApplicationController
 
   def search_result
     best_result = Geocoder.search(search_params[:query]).first
-    redirect_to root_path, notice: "Invalid address." if best_result.nil?
+    return redirect_to root_path, notice: "Invalid address." if best_result.nil?
 
     [best_result.latitude, best_result.longitude]
   end
