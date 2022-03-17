@@ -14,24 +14,9 @@
   <div class="row">
     <% @cooking_sessions.each do |cooking_session| %>
       <div class="col-4">
-<<<<<<< HEAD
+
         <%= render "cooking_sessions/card", cooking_session: cooking_session %>
-=======
-        <div class="card mb-3">
-          <%= link_to cooking_session_path(cooking_session), class: "card" do %>
-            <img class="card-img-top" src="..." alt="Meal">
-            <div class="card-body">
-              <h5 class="card-title"><%= cooking_session.meal.name %></h5>
-              <p class="card-text"><%= cooking_session.chef_name %></p>
-              <p class="card-text"><%= cooking_session.portions_left %> portions left</p>
-              <p class="card-text">Ready in <%= distance_of_time_in_words_to_now(cooking_session.end_at) %></p>
-              <% if @search_result.present? %>
-                <p class="card-text"><%= cooking_session.distance_to(@search_result).round(2) %>km away</p>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
->>>>>>> master
+
       </div>
     <% end %>
   </div>
