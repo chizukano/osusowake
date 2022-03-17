@@ -1,57 +1,20 @@
-<h1 class="text-center">Ready Soon</h1>
-
-<div class="container">
+<div class="container py-3">
+  <h1 class="text-center mb-3">Ready Soon</h1>
   <div class="row">
     <% @cooking_sessions.each do |cooking_session| %>
       <div class="col-4">
-        <div class="card mb-3">
-          <div class="pos-r">
-            <img class="card-img-top" src="https://place-hold.it/215x150" alt="Meal">
-          </div>
-          <div class="card-body fs-6 ">
-
-            <p class="card-text mb-0 ">Ready in <%= distance_of_time_in_words_to_now(cooking_session.end_at) %></p>
-            <p class="card-text mb-0">
-              <%= cooking_session.max_portions %>
-              <span class="text-muted small">portions left</span>
-            </p>
-            <% if @search_result.present? %>
-              <p class="card-text ">
-                <%= cooking_session.distance_to(@search_result).round(2) %><span class="small text-muted">km away</span>
-              </p>
-              <div class="progress">
-                 <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-             </div>
-
-            <% end  %>
-          </div>
-        </div>
+        <%= render "cooking_sessions/card", cooking_session: cooking_session %>
       </div>
     <% end %>
   </div>
-</div>
 
-<hr>
+  <hr>
 
-
-
-<h1>Check out these meals your neighbors are cooking!</h1>
-<br>
-<div class="container">
+  <h1 class="text-center mb-3">Check out these meals your neighbors are cooking!</h1>
   <div class="row">
     <% @cooking_sessions.each do |cooking_session| %>
       <div class="col-4">
-        <div class="card mb-3">
-          <img class="card-img-top" src="https://place-hold.it/215x150" alt="Meal">
-          <div class="card-body fs-6 ">
-
-            <p class="card-text my-card ">Ready in <%= distance_of_time_in_words_to_now(cooking_session.end_at) %></p>
-            <p class="card-text my-card">Portions left <%= cooking_session.max_portions %></p>
-            <% if @search_result.present? %>
-              <p class="card-text "><%= cooking_session.distance_to(@search_result).round(2) %>km away</p>
-            <% end  %>
-          </div>
-        </div>
+        <%= render "cooking_sessions/card", cooking_session: cooking_session %>
       </div>
     <% end %>
   </div>
