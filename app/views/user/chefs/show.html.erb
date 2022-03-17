@@ -11,4 +11,12 @@
     <% end %>
   </ul>
   <% end %>
+<ul class="list-unstyled">
+  <li>
+    <%= link_to "Add a new dish", new_user_chef_meal_path, class: "btn btn-success mt-1" %>
+    <%= link_to "Schedule a cooking", new_user_chef_cooking_session_path, class: "btn btn-success mt-1" %>
+  </li>
+  <li><%= link_to "Your profile page", user_chef_path, class: "btn btn-success mt-1" %></li>
+  <li><%= link_to "Explore dishes from other chefs!", cooking_sessions_path, class: "btn btn-outline-success mt-1" %></li>
+</ul>
 </div>

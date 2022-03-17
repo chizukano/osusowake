@@ -1,6 +1,7 @@
 class User::CookingSessionsController < ApplicationController
   def new
     @cooking_session = CookingSession.new
+    @meals = current_user.chef.meals
   end
 
   def create
@@ -10,7 +11,7 @@ class User::CookingSessionsController < ApplicationController
     @cooking_session.longitude = current_user.chef.longitude
 
     if @cooking_session.save
-      redirect_to cooking_sessions_path
+      redirect_to user_chef_path
       # tentative path that redirects to index of cooking sessions
     else
       render :new

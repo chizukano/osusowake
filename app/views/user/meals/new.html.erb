@@ -5,6 +5,6 @@
   <%= simple_form_for [@meal], url: user_chef_meal_path do |f| %>
     <%= f.input :name, placeholder: "Name of your dish", label: false %>
     <%= f.input :description, placeholder: "brief description of your dish", as: :text, label: false %>
-    <%= f.submit "Submit", class: "btn btn-primary mb-3" %>
+    <%= f.submit "Schedule a session", class: "btn btn-outline-success mb-3" %>
   <% end %>
 </div>
