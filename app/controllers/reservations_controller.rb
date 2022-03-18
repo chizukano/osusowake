@@ -5,11 +5,11 @@ class ReservationsController < ApplicationController
     @reservation.user = current_user
     @reservation.cooking_session =  @cooking_session
 
-   if @reservation.save
-    redirect_to reservation_path(@reservation)
-   elsif
-    render "cooking_sessions/show"
-   end
+    if @reservation.save
+      redirect_to reservation_path(@reservation)
+    else
+      render "cooking_sessions/show"
+    end
   end
 
   def show

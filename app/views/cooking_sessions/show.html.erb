@@ -4,7 +4,7 @@
     <%= cl_image_tag @cooking_session.meal.photo.key, class: "card-img-top", crop: :fill %>
     <ul class="list-unstyled">
       <li>Description: <%= @cooking_session.meal.description %></li>
-      <li>Portion available: <%= @cooking_session.max_portions %></li>
+      <li>Portion available: <%= @cooking_session.portions_left %></li>
       <li>Will be ready in: <%=  distance_of_time_in_words_to_now(@cooking_session.end_at) %></li>
       <li><%= @cooking_session.meal.chef.address %></li>
     </ul>
