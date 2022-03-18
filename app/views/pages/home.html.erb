@@ -1,7 +1,7 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1486887396153-fa416526c108?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);">
   <div class="container">
-    <h1><strong>OSUSOWAKE</strong></h1>
-    <p>Experience unique and homemade meals from your neighbors</p>
+    <h1>OSUSOWAKE</h1>
+    <p>Try unique and homemade meals from your neighbours</p>
 
     <%= simple_form_for :search, url: cooking_sessions_path, method: :get do |f| %>
       <%= f.input :query,
@@ -10,5 +10,32 @@
       %>
       <%= submit_tag "Search", class: "btn btn-flat" %>
     <% end %>
+  </div>
+</div>
+<div class="description-container">
+  <div class="container">
+    <p><em><strong>What is OSUSOWAKE?</strong></em></p>
+    <p>The Japanese term Osusowake /おすそわけ/ means sharing something with neighbours. Traditionally, Osuso(“hem of kimono”) Wake(“share”) was a word to describe a distribution of what has been given to you. It is a traditional communication style to pay it forward and care about neighbours and friends.
+    </p>
+  </div>
+
+  <div class="container">
+    <p><strong>How OSUSOWAKE works</strong></p>
+    <p><em>Are you a foodie?</em>
+    <br>
+      Do you want to try your neighbour’s meal? That’s where OSUSOWAKE can help you!
+      OSUSOWAKE is where amateur chefs near you can share their dishes.
+    <br>
+      Let’s satisfy your craving!
+    </p>
+  </div>
+
+  <div class="container">
+    <p><em>Are you an amateur chef?</em>
+    <br>
+      If you love cooking and want to share some portions with your neighbours, OSUSOWAKE is here for you! It is your opportunity to become a home chef and let people try your food!
+    <br>
+      Let’s become a chef!
+    </p>
   </div>
 </div>

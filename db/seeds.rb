@@ -41,9 +41,8 @@ puts "---creating fake meals---"
 meal_names = ["Chicken Butter Curry", "Caesar Salad", "Chicken Ramen", "Green Salad",
               "Guacamole Dip", "Shrimp Pasta with Creamy Tomato Sauce", "Dumplings",
               "Fresh Pasta", "Taiyaki", "Salmon with Tomato Soup", "Chocolate Chip Cookies",
-              "Meatball Pasta", "Wanton Soup", "Cinnamon Roll", "Walnut Bread", "Pasta Salad",
-              "Arugula Mozzarella Pizza", "Chocolate Donuts", "Cauliflower Dip"
-              ]
+              "Meatball Pasta", "Wonton Soup", "Cinnamon Roll", "Walnut Bread", "Pasta Salad",
+              "Arugula Mozzarella Pizza", "Chocolate Donuts", "Cauliflower Dip"]
 
 meals = []
 meal_names.map do |meal_name|

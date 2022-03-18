@@ -1,6 +1,10 @@
 .navbar-lewagon {
+  h2 {
+    font-family: 'PT Serif', serif;
+  }
+
   justify-content: space-between;
-  background: white;
+  background: $ow-green-5;
 }
 
 .navbar-lewagon .navbar-collapse {
