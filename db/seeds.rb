@@ -39,8 +39,8 @@ chefs = [chef1, chef2]
 puts "---creating fake meals---"
 
 meal_names = ["Chicken Butter Curry", "Caesar Salad", "Chicken Ramen", "Green Salad",
-              "Guacamole Dip", "Shrimp Pasta with Creamy Tomato Sauce", "Dumplings",
-              "Fresh Pasta", "Taiyaki", "Salmon with Tomato Soup", "Chocolate Chip Cookies",
+              "Guacamole Dip", "Shrimp Pasta with Creamy Tomato Sauce",
+              "Fresh Pasta", "Salmon with Tomato Soup", "Chocolate Chip Cookies",
               "Meatball Pasta", "Wonton Soup", "Cinnamon Roll", "Walnut Bread", "Pasta Salad",
               "Arugula Mozzarella Pizza", "Chocolate Donuts", "Cauliflower Dip"]
 
