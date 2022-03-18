@@ -18,8 +18,8 @@ user3 = User.create!(
 users = [user1, user2, user3]
 
 users.map do |user|
-  file = File.open(("db/support/#{user_username.parameterize}.jpg"))
-  user.photo.attach(io: file, filename: "#{user_username.parameterize}.jpg", content_type: 'image/jpg')
+  file = File.open("db/support/#{user.username}.jpg")
+  user.photo.attach(io: file, filename: "#{user.username}.jpg", content_type: 'image/jpg')
   user.save!
 end
 puts "---done---"
@@ -30,25 +30,37 @@ chef1 = Chef.create!(
   user: user1
 )
 chef2 = Chef.create!(
-  address: "Guanajuato 165, CDMX",
+  address: "Tlacotalpan 30, CDMX",
   user: user2
 )
 puts "---done---"
 chefs = [chef1, chef2]
 
-meals = []
 puts "---creating fake meals---"
-10.times do
-  meals << Meal.create!(
-    name: Faker::Food.dish,
+
+meal_names = ["Chicken Butter Curry", "Caesar Salad", "Chicken Ramen", "Green Salad",
+              "Guacamole Dip", "Shrimp Pasta with Creamy Tomato Sauce", "Dumplings",
+              "Fresh Pasta", "Taiyaki", "Salmon with Tomato Soup", "Chocolate Chip Cookies",
+              "Meatball Pasta", "Wanton Soup", "Cinnamon Roll", "Walnut Bread", "Pasta Salad",
+              "Arugula Mozzarella Pizza", "Chocolate Donuts", "Cauliflower Dip"
+              ]
+
+meals = []
+meal_names.map do |meal_name|
+  file2 = File.open("db/support/#{meal_name.parameterize}.jpg")
+  meal = Meal.new(
+    name: meal_name,
     description: Faker::Food.description,
     chef: chefs.sample
   )
+  meal.photo.attach(io: file2, filename: "#{meal_name.parameterize}.jpg", content_type: 'image/jpg')
+  meal.save!
+  meals << meal
 end
 puts "---done---"
 
-cooking_sessions = []
 puts "---creating fake past cooking sessions---"
+cooking_sessions = []
 3.times do
   meal = meals.sample
   chef = meal.chef
@@ -62,6 +74,7 @@ puts "---creating fake past cooking sessions---"
     meal: meal
   )
 end
+
 3.times do
   meal = meals.sample
   chef = meal.chef

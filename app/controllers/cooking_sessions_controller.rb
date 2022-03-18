@@ -8,9 +8,9 @@ class CookingSessionsController < ApplicationController
 
   def index
     if search_params[:query].present?
-      @search_result = search_result
+      session[:search_result] = search_result
       max_distance = (search_params[:max_distance].presence || 20).to_i
-      @cooking_sessions = CookingSession.near(@search_result, max_distance)
+      @cooking_sessions = CookingSession.near(session[:search_result], max_distance)
     else
       @cooking_sessions = CookingSession.all
     end
