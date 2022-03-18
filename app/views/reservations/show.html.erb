@@ -4,7 +4,7 @@
   <br>
   <h4>Order Summary:</h4>
   <div class="card mb-3">
-    <%= cl_image_tag @reservation.cooking_session.meal.photo.key, class: "card-img-top img-fluid", crop: :fill %>
+    <%= cl_image_tag @reservation.cooking_session.meal.photo.key, class: "card-img-top img-fluid", height:100, width: 250, crop: :fill %>
     <div class="card-body">
       <h5 class="card-title"><%= @cooking_session.meal_name %></h5>
       <p class="card-text">Prepared by <%= @cooking_session.chef_name %></p>
