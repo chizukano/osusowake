@@ -1,23 +1,20 @@
-<h1>Check out these meals your neighbors are cooking!</h1>
-<br>
-<div class="container">
+<div class="container py-3">
+  <h1 class="text-center mb-3">Ready Soon</h1>
   <div class="row">
     <% @cooking_sessions.each do |cooking_session| %>
       <div class="col-4">
-        <div class="card mb-3">
-          <%= link_to cooking_session_path(cooking_session), class: "card" do %>
-            <img class="card-img-top" src="..." alt="Meal">
-            <div class="card-body">
-              <h5 class="card-title"><%= cooking_session.meal.name %></h5>
-              <p class="card-text"><%= cooking_session.chef_name %></p>
-              <p class="card-text"><%= cooking_session.portions_left %> portions left</p>
-              <p class="card-text">Ready in <%= distance_of_time_in_words_to_now(cooking_session.end_at) %></p>
-              <% if @search_result.present? %>
-                <p class="card-text"><%= cooking_session.distance_to(@search_result).round(2) %>km away</p>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
+        <%= render "cooking_sessions/card", cooking_session: cooking_session %>
+      </div>
+    <% end %>
+  </div>
+
+  <hr>
+
+  <h1 class="text-center mb-3">Check out these meals your neighbors are cooking!</h1>
+  <div class="row">
+    <% @cooking_sessions.each do |cooking_session| %>
+      <div class="col-4">
+        <%= render "cooking_sessions/card", cooking_session: cooking_session %>
       </div>
     <% end %>
   </div>
