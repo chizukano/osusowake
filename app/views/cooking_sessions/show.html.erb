@@ -11,7 +11,8 @@
 
     <h2 class="border-bottom">Let's schedule a pickup!</h2>
     <%= simple_form_for [@cooking_session, @reservation] do |f| %>
-      <%= f.input :portion_count, label: "How many portions do you want?" %>
+      <p>Max Portions: <%= @cooking_session.max_portions  %></p>
+      <%= f.input :portion_count, input_html: { min: 0 }, label: "How many portions do you want?" %>
       <%= f.submit "Let's eat!", class: "btn btn-outline-success mb-3" %>
     <% end %>
 </div>
