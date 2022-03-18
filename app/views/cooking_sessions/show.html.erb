@@ -1,18 +1,20 @@
 <%# POST cooking_sessions/:cs_id/reservations %>
-<div class ="container">
+<div class ="container text-" >
   <h1><%= @cooking_session.meal.chef.user.username %>'s <strong><%= @cooking_session.meal.name %></strong></h1>
-    <%= cl_image_tag @cooking_session.meal.photo.key, class: "card-img-top", crop: :fill %>
-    <ul class="list-unstyled">
-      <li>Description: <%= @cooking_session.meal.description %></li>
-      <li>Portion available: <%= @cooking_session.portions_left %></li>
-      <li>Will be ready in: <%=  distance_of_time_in_words_to_now(@cooking_session.end_at) %></li>
-      <li><%= @cooking_session.distance_to(last_location.coordinates) %></li>
-    </ul>
+  <%= cl_image_tag @cooking_session.meal.photo.key, class: "card-img-top mb-3 img-fluid", width: 2000,  height: 1000, crop: :fill %>
+  <ul class="list-unstyled">
+    <li>Description: <%= @cooking_session.meal.description %></li>
+    <li>Portion available: <%= @cooking_session.portions_left %></li>
+    <li>Will be ready in: <%=  distance_of_time_in_words_to_now(@cooking_session.end_at) %></li>
+    <li><%= @cooking_session.distance_to(last_location.coordinates) %></li>
+  </ul>
 
-    <h2 class="border-bottom">Let's schedule a pickup!</h2>
-    <%= simple_form_for [@cooking_session, @reservation] do |f| %>
-      <p>Max Portions: <%= @cooking_session.max_portions  %></p>
-      <%= f.input :portion_count, input_html: { min: 0 }, label: "How many portions do you want?" %>
-      <%= f.submit "Let's eat!", class: "btn btn-outline-success mb-3" %>
-    <% end %>
+  <div class="w-50 m-auto" >
+  <h2 class="border-bottom ">Let's schedule a pickup!</h2>
+  <%= simple_form_for [@cooking_session, @reservation] do |f| %>
+    <p>Max Portions: <%= @cooking_session.max_portions  %></p>
+    <%= f.input :portion_count, input_html: { min: 0 }, label: "How many portions do you want?" %>
+    <%= f.submit "Let's eat!", class: "btn btn-outline-success mb-3" %>
+  <% end %>
+  </div>
 </div>
