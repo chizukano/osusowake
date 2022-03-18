@@ -34,7 +34,7 @@ chef2 = Chef.create!(
   user: user2
 )
 puts "---done---"
-chefs = [chef1, chef2]
+chefs = [chef1, chef3]
 
 puts "---creating fake meals---"
 
