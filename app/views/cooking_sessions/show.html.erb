@@ -6,10 +6,10 @@
       <li>Description: <%= @cooking_session.meal.description %></li>
       <li>Portion available: <%= @cooking_session.portions_left %></li>
       <li>Will be ready in: <%=  distance_of_time_in_words_to_now(@cooking_session.end_at) %></li>
-      <li><%= @cooking_session.meal.chef.address %></li>
+      <li><%= @cooking_session.distance_to(last_location.coordinates) %></li>
     </ul>
 
-    <h2 class="border-bottom">Let's schedule a delivery!</h2>
+    <h2 class="border-bottom">Let's schedule a pickup!</h2>
     <%= simple_form_for [@cooking_session, @reservation] do |f| %>
       <%= f.input :portion_count, label: "How many portions do you want?" %>
       <%= f.submit "Let's eat!", class: "btn btn-outline-success mb-3" %>
