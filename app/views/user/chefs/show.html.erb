@@ -4,7 +4,7 @@
 <hr>
 <div class="container mb-3">
 <%# show current and upcoming reservations on each cooking session %>
-  <h3>Your Schedule</h3>
+  <h3>What's Cooking?</h3>
   <% @chef.meals.each do |meal| %>
     <% if meal.cooking_sessions.exists? %>
       <div class="card text-center">
