@@ -12,7 +12,7 @@
     </div>
     <div class="col-6 pt-5">
       <%= simple_form_for [@cooking_session, @reservation] do |f| %>
-        <h2 class="border-bottom">Book now!</h2>
+        <h2 class="border-bottom">Book now!!</h2>
         <p>Max Portions: <%= @cooking_session.max_portions  %></p>
         <%= f.input :portion_count, input_html: { min: 0 } %>
         <%= f.submit "Confirm booking" %>
