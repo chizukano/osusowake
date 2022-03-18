@@ -1,5 +1,5 @@
 <%# POST cooking_sessions/:cs_id/reservations %>
-<div class ="container text-" >
+<div class ="container" >
   <h1><%= @cooking_session.meal.chef.user.username %>'s <strong><%= @cooking_session.meal.name %></strong></h1>
   <%= cl_image_tag @cooking_session.meal.photo.key, class: "card-img-top mb-3 img-fluid", width: 2000,  height: 1000, crop: :fill %>
   <ul class="list-unstyled">
