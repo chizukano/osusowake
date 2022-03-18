@@ -8,9 +8,8 @@ class CookingSessionsController < ApplicationController
 
   def index
     if search_params[:query].present?
-      @search_result = search_result
-      max_distance = (search_params[:max_distance].presence || 20).to_i
-      @cooking_sessions = CookingSession.near(@search_result, max_distance)
+      update_last_location
+      @cooking_sessions = CookingSession.near(last_location.address, last_location.max_distance)
     else
       @cooking_sessions = CookingSession.all
     end
@@ -26,11 +25,9 @@ class CookingSessionsController < ApplicationController
     {}
   end
 
-  def search_result
-    best_result = Geocoder.search(search_params[:query]).first
-    redirect_to root_path, notice: "Invalid address." if best_result.nil?
-
-    [best_result.latitude, best_result.longitude]
+  def update_last_location
+    update_session = last_location.update_with(query: search_params[:query], max_distance: search_params[:max_distance].presence || 20)
+    redirect_to root_path, notice: "Invalid address." unless update_session
   end
 
   def new

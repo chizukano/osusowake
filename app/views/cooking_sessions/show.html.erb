@@ -6,6 +6,9 @@
     <p>Meal being cooked: <%= @cooking_session.meal.name %></p>
     <p>Meal description: <%= @cooking_session.meal.description %></p>
     <p>Portions left: <%= @cooking_session.portions_left  %></p>
+    <p>
+      <%= @cooking_session.distance_to(last_location.coordinates) %>
+    </p>
  <P>Pick up meal in &nbsp<%=  distance_of_time_in_words_to_now(@cooking_session.end_at) %></P>
    <%= f.input :portion_count %>
     <%= f.submit "Confirm booking" %>

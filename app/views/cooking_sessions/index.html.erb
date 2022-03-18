@@ -1,24 +1,41 @@
-<h1>Check out these meals your neighbors are cooking!</h1>
-<br>
+<div class="container mt-3">
+  <%= simple_form_for :search, url: cooking_sessions_path, method: :get do |f| %>
+    <%= f.input :query,
+      label: "Location:",
+      input_html: { value: last_location.address }
+    %>
+    <%= f.input :max_distance,
+      label: "Meals available in:",
+      collection: { "5km" => 5, "10km" => 10 },
+      as: :radio_buttons
+    %>
+    <%= submit_tag "Refresh your search", class: "btn btn-flat mb-3" %>
+  <% end %>
+</div>
+<hr>
 <div class="container">
-  <div class="row">
-    <% @cooking_sessions.each do |cooking_session| %>
-      <div class="col-4">
-        <div class="card mb-3">
-          <%= link_to cooking_session_path(cooking_session), class: "card" do %>
-            <img class="card-img-top" src="..." alt="Meal">
-            <div class="card-body">
-              <h5 class="card-title"><%= cooking_session.meal.name %></h5>
-              <p class="card-text"><%= cooking_session.chef_name %></p>
-              <p class="card-text"><%= cooking_session.portions_left %> portions left</p>
-              <p class="card-text">Ready in <%= distance_of_time_in_words_to_now(cooking_session.end_at) %></p>
-              <% if @search_result.present? %>
-                <p class="card-text"><%= cooking_session.distance_to(@search_result).round(2) %>km away</p>
-              <% end %>
-            </div>
-          <% end %>
+  <h1>Check out these meals your neighbors are cooking!</h1>
+  <br>
+  <div class="container">
+    <div class="row">
+      <% @cooking_sessions.each do |cooking_session| %>
+        <div class="col-4">
+          <div class="card mb-3">
+            <%= link_to cooking_session_path(cooking_session), class: "card" do %>
+              <img class="card-img-top" src="..." alt="Meal">
+              <div class="card-body">
+                <h5 class="card-title"><%= cooking_session.meal.name %></h5>
+                <p class="card-text"><%= cooking_session.chef_name %></p>
+                <p class="card-text"><%= cooking_session.portions_left %> portions left</p>
+                <p class="card-text">Ready in <%= distance_of_time_in_words_to_now(cooking_session.end_at) %></p>
+                <% if last_location.coordinates.present? %>
+                  <p class="card-text"><%= cooking_session.distance_to(last_location.coordinates).round(2) %>km away</p>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
