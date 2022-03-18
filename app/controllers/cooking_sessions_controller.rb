@@ -9,9 +9,9 @@ class CookingSessionsController < ApplicationController
   def index
     if search_params[:query].present?
       update_last_location
-      @cooking_sessions = CookingSession.near(last_location.address, last_location.max_distance)
+      @cooking_sessions = CookingSession.includes(meal: { chef: :user }).near(last_location.address, last_location.max_distance)
     else
-      @cooking_sessions = CookingSession.all
+      @cooking_sessions = CookingSession.includes(meal: { chef: :user }).all
     end
   end
 
