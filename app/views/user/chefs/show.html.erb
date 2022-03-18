@@ -3,22 +3,31 @@
 </div>
 <div class="container mb-3">
 <%# show current and upcoming reservations on each cooking session %>
+  <h3>Your Schedule</h3>
   <% @chef.meals.each do |meal| %>
     <% if meal.cooking_sessions.exists? %>
-    <%= meal.name %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= meal.name %></h5>
+        </div>
+      </div>
     <% end %>
   <% end %>
 </div>
 <div class="container">
   <% if @chef.meals.exists? %>
-  <h3>Your Meals</h3>
-  <ul class="list-unstyled">
+    <h3>Your Meals</h3>
     <% @chef.meals.each do |meal| %>
-      <li><%= meal.name %></li>
-      <li>Cooked <%= meal.cooking_sessions.count %> times</li>
+      <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= meal.name %></h5>
+        <p class="card-text">Cooked <%= meal.cooking_sessions.count %> times</p>
+      </div>
+    </div>
     <% end %>
-  </ul>
   <% end %>
+</div>
+<div class="container">
 <ul class="list-unstyled">
   <li>
     <%= link_to "Add a new dish", new_user_chef_meal_path, class: "btn btn-success mt-1" %>
