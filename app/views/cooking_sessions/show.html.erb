@@ -5,7 +5,7 @@
     <h2 class="border-bottom">Book now!</h2>
     <p>Meal being cooked: <%= @cooking_session.meal.name %></p>
     <p>Meal description: <%= @cooking_session.meal.description %></p>
-    <p>Max Portions: <%= @cooking_session.max_portions  %></p>
+    <p>Portions left: <%= @cooking_session.portions_left  %></p>
  <P>Pick up meal in &nbsp<%=  distance_of_time_in_words_to_now(@cooking_session.end_at) %></P>
    <%= f.input :portion_count %>
     <%= f.submit "Confirm booking" %>
