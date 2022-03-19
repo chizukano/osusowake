@@ -5,6 +5,7 @@
 <div class="container mb-3">
 <%# show current and upcoming reservations on each cooking session %>
   <h3>What's Cooking?</h3>
+  <%= @chef.meals.first.cooking_sessions.first.end_at %>
   <% @chef.meals.each do |meal| %>
     <% if meal.cooking_sessions.exists? %>
       <div class="card text-center">
@@ -12,6 +13,18 @@
           <h5 class="card-title"><%= meal.name %></h5>
           <h6>Pickup in <strong><%= rand(2..10) %></strong> hours</h6>
           <h6><strong><%= rand(2..10) %></strong> of 10 portions reserved</h6>
+          <% meal.cooking_sessions.each do |cooking_session|%>
+            <% if meal.id ==  cooking_session.meal_id %>
+              <h6>Pickup at <%= cooking_session.end_at %></h6>
+              <h6>Meal ID= <%= cooking_session.meal_id %></h6>
+              <h6>Chef ID= <%= meal.chef_id %></h6>
+              <% cooking_session.reservations.each do |reservation| %>
+                <h6>Portions Booked: <%= reservation.portion_count %></h6>
+              <% end %>
+            <% end %>
+          <% end %>
+
+
         </div>
       </div>
     <% end %>
