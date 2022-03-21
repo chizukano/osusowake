@@ -60,8 +60,7 @@ puts "---done---"
 
 puts "---creating fake past cooking sessions---"
 cooking_sessions = []
-3.times do
-  meal = meals.sample
+meals[0..2].each do |meal|
   chef = meal.chef
   cooking_sessions << CookingSession.create!(
     max_portions: rand(2..10),
@@ -74,8 +73,7 @@ cooking_sessions = []
   )
 end
 
-3.times do
-  meal = meals.sample
+meals[3..5].each do |meal|
   chef = meal.chef
   cooking_sessions << CookingSession.create!(
     max_portions: rand(2..10),
@@ -90,8 +88,7 @@ end
 puts "---done---"
 
 puts "---creating fake near future cooking sessions---"
-10.times do
-  meal = meals.sample
+meals[6..13].each do |meal|
   chef = meal.chef
   cooking_sessions << CookingSession.create!(
     max_portions: rand(2..10),
@@ -106,8 +103,7 @@ end
 puts "---done---"
 
 puts "---creating fake future cooking sessions---"
-3.times do
-  meal = meals.sample
+meals[14..16].each do |meal|
   chef = meal.chef
   cooking_sessions << CookingSession.create!(
     max_portions: rand(2..10),
@@ -119,25 +115,25 @@ puts "---creating fake future cooking sessions---"
     meal: meal
   )
 end
-3.times do
-  meal = meals.sample
-  chef = meal.chef
-  cooking_sessions << CookingSession.create!(
-    max_portions: rand(2..10),
-    address: chef.address,
-    longitude: chef.longitude,
-    latitude: chef.latitude,
-    start_at: Faker::Time.forward(days: 1, period: :afternoon, format: :long),
-    end_at: Faker::Time.forward(days: 1, period: :evening, format: :long),
-    meal: meal
-  )
-end
+# 3.times do
+#   meal = meals.sample
+#   chef = meal.chef
+#   cooking_sessions << CookingSession.create!(
+#     max_portions: rand(6..10),
+#     address: chef.address,
+#     longitude: chef.longitude,
+#     latitude: chef.latitude,
+#     start_at: Faker::Time.forward(days: 1, period: :afternoon, format: :long),
+#     end_at: Faker::Time.forward(days: 1, period: :evening, format: :long),
+#     meal: meal
+#   )
+# end
 puts "---done---"
 
 puts "---creating fake reservations---"
 5.times do
   Reservation.create!(
-    portion_count: rand(2..10),
+    portion_count: rand(1..2),
     user: users.sample,
     cooking_session: cooking_sessions.sample
   )
