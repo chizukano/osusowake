@@ -4,6 +4,12 @@ class CookingSessionsController < ApplicationController
   def show
     @cooking_session = CookingSession.find(params[:id])
     @reservation = Reservation.new
+
+    @markers = [
+      { lat: @cooking_session.latitude,
+        lng: @cooking_session.longitude
+      }
+    ]
   end
 
   def index
