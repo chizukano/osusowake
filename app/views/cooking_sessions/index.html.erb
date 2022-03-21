@@ -9,12 +9,12 @@
       collection: { "5km" => 5, "10km" => 10 },
       as: :radio_buttons
     %>
-    <%= submit_tag "Refresh your search", class: "btn btn-flat mb-3" %>
+    <%= submit_tag "Refine your search", class: "btn btn-flat mb-3" %>
   <% end %>
 </div>
 <hr>
 <div class="container py-3">
-  <h1 class="text-center mb-3">Ready Soon</h1>
+  <h3 class="text-left mb-3">Ready Soon</h3>
   <div class="row">
     <% @cooking_sessions.upcoming.limit(6).each do |cooking_session| %>
       <div class="col-4 mb-3">
@@ -25,7 +25,7 @@
 
   <hr>
 
-  <h1 class="text-center mb-3">Check out these meals your neighbors are cooking!</h1>
+  <h3 class="text-left mb-3">Check out these meals your neighbors are cooking!</h3>
   <div class="row">
     <% @cooking_sessions.each do |cooking_session| %>
       <div class="col-4  mb-3">
