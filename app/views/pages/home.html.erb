@@ -3,13 +3,15 @@
     <h1>OSUSOWAKE</h1>
     <p>Try unique and homemade meals from your neighbours</p>
 
+    <div class="w-50 p-3">
     <%= simple_form_for :search, url: cooking_sessions_path, method: :get do |f| %>
       <%= f.input :query,
         placeholder: "Search from your location",
         label: false
       %>
-      <%= submit_tag "Search", class: "btn btn-flat" %>
+      <%= submit_tag "Browse Osusowake list", class: "btn btn-success w-75" %>
     <% end %>
+    </div>
   </div>
 </div>
 <div class="description-container">
