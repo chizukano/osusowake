@@ -1,0 +1,47 @@
+.card-homepage {
+  overflow: hidden;
+  height: 200px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  font-family: Roboto;
+
+  img {
+    height: 100%;
+    width: 350px;
+    object-fit: cover;
+  }
+
+  h2 {
+    font-weight: bold;
+    font-style: oblique;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.4;
+    opacity: .7;
+    margin-bottom: 0;
+    margin-top: 8px;
+  }
+
+  .btn {
+    margin-top: 5px;
+    width: 100%;
+    padding: 3px;
+    font-size: small;
+    border-radius: 2px;
+  }
+}
+
+
+
+.card-homepage .card-homepage-infos {
+  padding: 16px;
+}
