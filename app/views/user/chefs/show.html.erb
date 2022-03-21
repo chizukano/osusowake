@@ -3,15 +3,18 @@
 </div>
 <hr>
 <div class="container mb-3">
-<%# show current and upcoming reservations on each cooking session %>
   <h3>What's Cooking?</h3>
   <% @chef.meals.each do |meal| %>
     <% if meal.cooking_sessions.exists? %>
       <div class="card text-center">
         <div class="card-body">
           <h5 class="card-title"><%= meal.name %></h5>
-          <h6>Pickup in <strong><%= rand(2..3) %></strong> days</h6>
-          <h6><strong><%= rand(2..5) %></strong> of <%= rand(6..9) %> portions reserved</h6>
+          <% meal.cooking_sessions.each do |cooking_session|%>
+            <h6>Pickup in <%= distance_of_time_in_words_to_now(cooking_session.end_at) %></h6>
+            <% cooking_session.reservations.each do |reservation| %>
+              <h6><strong><%= reservation.portion_count %></strong> portions booked</h6>
+            <% end %>
+          <% end %>
         </div>
       </div>
     <% end %>
@@ -33,6 +36,7 @@
     <% end %>
   <% end %>
 </div>
+<%# display past cooking sessions? %>
 <div class="container">
 <ul class="list-unstyled">
   <li>
