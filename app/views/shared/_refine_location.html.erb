@@ -1,0 +1,23 @@
+<%= simple_form_for :search,
+                    url: cooking_sessions_path, method: :get,
+                    html: { class: "bg-white rounded flex-grow-1 nav-refine-location" } do |f| %>
+  <div class="d-flex align-items-center">
+    <i class="fa fa-map-marker-alt fa-2x py-2 px-3 text-muted fs-5"></i>
+    <%= f.input :query,
+        placeholder: "Your address",
+        input_html: { class: "text-center bg-transparent border-0", value: last_location.address },
+        wrapper: false,
+        label: false %>
+    <%= f.input :max_distance,
+        input_html: { class: "text-center bg-transparent border-0 w-auto" },
+        collection: { "5km" => 5, "10km" => 10 },
+        selected: last_location.max_distance,
+        include_blank: false,
+        include_hidden: false,
+        wrapper: false,
+        label: false %>
+    <%= f.button :button, class: "ps-0 pe-2" do %>
+      <i class="fa fa-search fa-2x p-2 fs-5"></i>
+    <% end %>
+  </div>
+<% end %>
