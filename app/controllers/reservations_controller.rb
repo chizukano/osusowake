@@ -3,7 +3,7 @@ class ReservationsController < ApplicationController
     @cooking_session = CookingSession.find(params[:cooking_session_id])
     @reservation = Reservation.new(reservation_params)
     @reservation.user = current_user
-    @reservation.cooking_session =  @cooking_session
+    @reservation.cooking_session = @cooking_session
 
     if @reservation.save
       redirect_to reservation_path(@reservation)

@@ -15,7 +15,32 @@ user3 = User.create!(
   email: "chizu@users.com",
   password: default_password
 )
-users = [user1, user2, user3]
+user4 = User.create!(
+  username: "Andy",
+  email: "andy@users.com",
+  password: default_password
+)
+user5 = User.create!(
+  username: "Eric",
+  email: "eric@users.com",
+  password: default_password
+)
+user6 = User.create!(
+  username: "Francine",
+  email: "francine@users.com",
+  password: default_password
+)
+user7 = User.create!(
+  username: "Georgia",
+  email: "georgia@users.com",
+  password: default_password
+)
+user8 = User.create!(
+  username: "Jerry",
+  email: "jerry@users.com",
+  password: default_password
+)
+users = [user1, user2, user3, user4, user5, user6, user7, user8]
 
 users.map do |user|
   file = File.open("db/support/#{user.username}.jpg")
@@ -33,8 +58,28 @@ chef2 = Chef.create!(
   address: "Tlacotalpan 30, CDMX",
   user: user2
 )
+chef3 = Chef.create!(
+  address: "Av Mexico 49, CDMX",
+  user: user4
+)
+chef4 = Chef.create!(
+  address: "Tapachula 88, CDMX",
+  user: user5
+)
+chef5 = Chef.create!(
+  address: "Calle de Durango 289, CDMX",
+  user: user6
+)
+chef6 = Chef.create!(
+  address: "Puebla 77, CDMX",
+  user: user7
+)
+chef7 = Chef.create!(
+  address: "Culiacan 26, CDMX",
+  user: user8
+)
 puts "---done---"
-chefs = [chef1, chef2]
+chefs = [chef1, chef2, chef3, chef4, chef5, chef6, chef7]
 
 puts "---creating fake meals---"
 
