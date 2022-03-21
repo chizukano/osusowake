@@ -8,7 +8,7 @@
         html5: true,
         as: :datetime,
         label: "Will be prepared by (choose date and time):",
-        input_html: { class: "flatpickr" }
+        input_html: { data: { controller: "flatpickr" } }
     %>
     <%= f.submit "Let's OSUSOWAKE!", class: "btn btn-success mb-3" %>
   <% end %>
