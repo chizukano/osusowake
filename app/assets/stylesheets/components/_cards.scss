@@ -58,9 +58,13 @@
     transition: opacity 0.25s;
   }
 
-  &:hover {
+  &.hoverable:hover {
     .card-image-info {
       opacity: 0;
     }
   }
+}
+
+.card-cookbook {
+  height: 100px;
 }
