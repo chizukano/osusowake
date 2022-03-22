@@ -1,6 +1,7 @@
 class CookingSession < ApplicationRecord
   belongs_to :meal
   has_many :reservations
+  has_one :chef, through: :meal
   geocoded_by :address
 
   validates :latitude, :longitude, presence: true

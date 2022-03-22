@@ -1,0 +1,25 @@
+<div class="card mb-1 p-0">
+  <div class="card-body">
+    <div class="d-flex justify-content-between">
+      <p class="h4">Chef <%= chef.user.username %></p>
+      <%= cl_image_tag(
+        chef.user.photo.key,
+        gravity: "face",
+        width: 150,
+        height: 150,
+        crop: :fill,
+        class: "avatar-large bleeding-avatar"
+      ) %>
+    </div>
+    <ul class="list-unstyled">
+      <li>Osusowake chef for <%= distance_of_time_in_words_to_now(@cooking_session.chef.created_at.to_date) %></li>
+      <% if chef.cooking_sessions.count > 1 %>
+        <li><%= chef.cooking_sessions.count %> portions served</li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div>
+
+  </div>
+</div>
