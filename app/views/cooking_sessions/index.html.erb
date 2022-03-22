@@ -1,18 +1,3 @@
-<div class="container mt-3 w-50">
-  <%= simple_form_for :search, url: cooking_sessions_path, method: :get do |f| %>
-    <%= f.input :query,
-      label: "Location:",
-      input_html: { value: last_location.address }
-    %>
-    <%= f.input :max_distance,
-      label: "Meals within:",
-      collection: { "5km" => 5, "10km" => 10 },
-      as: :radio_buttons
-    %>
-    <%= submit_tag "Refine your search", class: "btn btn-flat mb-3" %>
-  <% end %>
-</div>
-<hr>
 <div class="container py-3">
   <h3 class="text-left mb-3">Ready Soon</h3>
   <div class="row">
