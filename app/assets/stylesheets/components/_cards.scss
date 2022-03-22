@@ -40,8 +40,27 @@
   }
 }
 
-
-
 .card-homepage .card-homepage-infos {
   padding: 16px;
+}
+
+.card {
+  .card-image-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1rem 1rem 5rem 1rem;
+    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0));
+    right: 0;
+    color: white;
+    border-radius: 13px 13px 0 0;
+    opacity: 1;
+    transition: opacity 0.25s;
+  }
+
+  &:hover {
+    .card-image-info {
+      opacity: 0;
+    }
+  }
 }
