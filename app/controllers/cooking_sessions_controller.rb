@@ -4,6 +4,14 @@ class CookingSessionsController < ApplicationController
   def show
     @cooking_session = CookingSession.find(params[:id])
     @reservation = Reservation.new
+
+    @markers = [
+      { lat: @cooking_session.latitude,
+        lng: @cooking_session.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { cooking_session: @cooking_session }),
+        image_url: helpers.asset_url('folk-logo2.png')
+      }
+    ]
   end
 
   def index

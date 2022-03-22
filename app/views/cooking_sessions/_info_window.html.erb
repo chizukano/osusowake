@@ -1,0 +1,7 @@
+<ul class="list-unstyled">
+  <li><strong>Meet <%= cooking_session.meal.chef.user.username %> at:</strong></li>
+  <li><strong><%= cooking_session.address %></strong></li>
+  <% if last_location.present? %>
+  <li><%= @cooking_session.distance_to(last_location.coordinates).round(1) %>km away from you</li>
+  <% end %>
+</ul>
