@@ -1,25 +1,28 @@
 <%# POST cooking_sessions/:cs_id/reservations %>
-<div class ="container" >
-  <h1><%= @cooking_session.meal.chef.user.username %>'s <strong><%= @cooking_session.meal.name %></strong></h1>
-  <%= cl_image_tag @cooking_session.meal.photo.key, class: "card-img-top mb-3 img-fluid", width: 2000,  height: 1000, crop: :fill %>
-  <ul class="list-unstyled">
-    <li>Description: <%= @cooking_session.meal.description %></li>
-    <li>Will be ready in: <%=  distance_of_time_in_words_to_now(@cooking_session.end_at) %></li>
-    <li><%= @cooking_session.distance_to(last_location.coordinates).round(1) %>km away from your location</li>
-  </ul>
-
-  <div class="w-50 m-auto" >
-  <h2 class="border-bottom ">Let's schedule a pickup!</h2>
-  <%= simple_form_for [@cooking_session, @reservation] do |f| %>
-    <p>Portion available: <%= @cooking_session.portions_left %></p>
-    <%= f.input :portion_count, input_html: { min: 0, max: @cooking_session.portions_left }, label: "How many portions do you want?" %>
-    <%= f.submit "Let's eat!", class: "btn btn-outline-success mb-3" %>
-  <% end %>
+<div class ="d-flex flex-row" >
+  <div>
+    <h1><%= @cooking_session.meal.chef.user.username %>'s <strong><%= @cooking_session.meal.name %></strong></h1>
+    <%= cl_image_tag @cooking_session.meal.photo.key, class: "card-img-top mb-3 img-fluid", width: 2000,  height: 1000, crop: :fill %>
+    <ul class="list-unstyled">
+      <li>Description: <%= @cooking_session.meal.description %></li>
+      <li>Will be ready in: <%=  distance_of_time_in_words_to_now(@cooking_session.end_at) %></li>
+    </ul>
   </div>
 
-  <div style="width: 70%; height: 200px;"
-    data-controller="mapbox"
-    data-mapbox-markers-value="<%= @markers.to_json %>"
-    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div class="container">
+    <div style="width: 70%; height: 300px;"
+      data-controller="mapbox"
+      data-mapbox-markers-value="<%= @markers.to_json %>"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+
+    <div class="w-70">
+      <h3 class="border-bottom ">Let's schedule a pickup!</h3>
+      <%= simple_form_for [@cooking_session, @reservation] do |f| %>
+        <p>Portion available: <%= @cooking_session.portions_left %></p>
+        <%= f.input :portion_count, input_html: { min: 0, max: @cooking_session.portions_left }, label: "How many portions do you want?" %>
+        <%= f.submit "Let's eat!", class: "btn btn-outline-success mb-3" %>
+      <% end %>
+    </div>
   </div>
 </div>
