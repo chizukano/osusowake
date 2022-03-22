@@ -24,6 +24,10 @@ class CookingSession < ApplicationRecord
     max_portions - reservations.sum(:portion_count)
   end
 
+  def portions_reserved
+    reservations.sum(:portion_count)
+  end
+
   def ratio_of_portions_reserved
     (max_portions - portions_left).fdiv(max_portions)
   end
