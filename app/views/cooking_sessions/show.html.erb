@@ -18,22 +18,18 @@
           data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
 
-
-        <div class="card mb-1">
-          <div class="card-body">
-            <%= @cooking_session.distance_to(last_location.coordinates).round(1) %>km away from you
-          </div>
-        </div>
-
-        <div class="card p-2">
+        <div class="card px-3">
           <div class="card-body">
             <h5>Do you want a piece of <%= @cooking_session.chef.user.username %>'s <%= @cooking_session.meal.name %>?</h5>
             <%= simple_form_for [@cooking_session, @reservation] do |f| %>
               <h6>It will be <strong>ready in <%=  distance_of_time_in_words_to_now(@cooking_session.end_at) %></strong> at <strong><%= @cooking_session.address %></strong></h6>
+              <h6>(<%= @cooking_session.distance_to(last_location.coordinates).round(1) %>km away from you)</h6>
               <br>
-                <%= f.input :portion_count, as: :check_boxes, collection: 1..@cooking_session.portions_left, label: "Yes, please! Give me...", wrapper: :vertical_collection_inline %>
-                <p>portions.</p>
-                <%= f.submit "Let's get Osusowake!", class: "btn btn-outline-success mb-3 text-align-right" %>
+              <div class="d-flex mx-3 p-1">
+                <%= f.input :portion_count, as: :radio_buttons, collection: 1..@cooking_session.portions_left, label: "Yes, please! Give me...", wrapper: :vertical_collection_inline %>
+                <p class="align-self-end">portions.</p>
+              </div>
+                <%= f.submit "Let's get Osusowake!", class: "btn btn-outline-success mb-2" %>
             <% end %>
           </div>
         </div>
