@@ -90,12 +90,13 @@ meal_names = ["Chicken Butter Curry", "Caesar Salad", "Chicken Ramen", "Green Sa
               "Arugula Mozzarella Pizza", "Chocolate Donuts", "Cauliflower Dip"]
 
 meals = []
+current_chef_index = 0
 meal_names.map do |meal_name|
   file2 = File.open("db/support/#{meal_name.parameterize}.jpg")
   meal = Meal.new(
     name: meal_name,
     description: Faker::Food.description,
-    chef: chefs.sample
+    chef: chefs[(current_chef_index += 1) % chefs.size]
   )
   meal.photo.attach(io: file2, filename: "#{meal_name.parameterize}.jpg", content_type: 'image/jpg')
   meal.save!
