@@ -36,22 +36,23 @@
   <%= link_to "Schedule a cooking", new_user_chef_cooking_session_path, class: "btn btn-success mt-1" %>
 </div>
 <div class="container mb-3">
-  <div class="row">
-    <% if @chef.meals.exists? %>
-      <h3>Your Cookbook</h3>
+  <% if @chef.meals.exists? %>
+    <h3>Your Cookbook</h3>
+    <div class="row">
       <% @chef.meals.each do |meal| %>
-        <div class="card mb-2 col-6 col-lg-3 text-center">
-          <div class="card-body">
-            <h5 class="card-title"><%= meal.name %></h5>
-            <%= cl_image_tag meal.photo.key, height:100, width:130, crop: :fill %>
-            <% if meal.cooking_sessions.count > 1 %>
-            <h6>Cooked <%= meal.cooking_sessions.count %> times</h6>
-            <% end %>
+        <div class="col-sm-4 col-lg-2">
+          <div class="card text-black h-100">
+            <div class="position-relative">
+              <%= cl_image_tag meal.photo.key, class: "card-img img-fluid", height:300, width:300, crop: :fill %>
+              <div class="card-image-info">
+                <h5 class="card-title mb-0"><%= meal.name %></h5>
+              </div>
+            </div>
           </div>
         </div>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
 <%# display past cooking sessions? %>
 <div class="container">
