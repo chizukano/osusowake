@@ -1,0 +1,23 @@
+<% if chef.meals.exists? %>
+  <h3>Your Cookbook</h3>
+  <div class="row">
+    <% chef.meals.each do |meal| %>
+      <div class="col-sm-4 col-lg-2">
+        <div class="card overflow-hidden mb-3">
+          <%= cl_image_tag meal.photo.key, class: "card-img img-fluid", height:300, width:300, crop: :fill %>
+          <div class="card-image-info d-flex flex-column p-3">
+            <h5 class="card-title flex-grow-1"><%= meal.name %></h5>
+            <%= link_to new_user_chef_cooking_session_path, class:"mb-0 text-end small text-decoration-none text-white" do %>
+              Schedule cooking <%= icon "fa", "calendar-days" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+      <div class="col-sm-4 col-lg-2 d-flex">
+        <%= link_to new_user_chef_meal_path, class:"btn btn-outline-success w-100 mb-3 d-flex align-items-center justify-content-center" do %>
+          <%= icon "fa", "circle-plus", class: "me-1" %>
+          Add a new dish
+        <% end %>
+      </div>
+<% end %>
