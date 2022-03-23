@@ -1,10 +1,11 @@
 <div class="container">
 <h1>Become a Chef</h1>
 <h5>Let's Osusowake!</h5>
-<h6 class="mb-3">We need your address to show your neighbors where you are cooking.</h6>
+<h6 class="mb-3">We need your address and a short bio for your profile</h6>
 <%# use pundit to prevent non-users from becoming a chef %>
   <%= simple_form_for [@chef], url: user_chef_path do |f| %>
     <%= f.input :address, placeholder: "Enter your address", label: false %>
+    <%= f.input :bio, placeholder: "What's your cooking story behind?", label: false %>
     <%= f.submit "Submit", class: "btn btn-primary mb-3" %>
   <% end %>
 </div>

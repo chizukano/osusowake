@@ -1,46 +1,16 @@
 puts "---creating fake users---"
 default_password = "123456"
-user1 = User.create!(
-  username: "David",
-  email: "david@users.com",
-  password: default_password
-)
-user2 = User.create!(
-  username: "Brianna",
-  email: "brianna@users.com",
-  password: default_password
-)
-user3 = User.create!(
-  username: "Chizu",
-  email: "chizu@users.com",
-  password: default_password
-)
-user4 = User.create!(
-  username: "Andy",
-  email: "andy@users.com",
-  password: default_password
-)
-user5 = User.create!(
-  username: "Eric",
-  email: "eric@users.com",
-  password: default_password
-)
-user6 = User.create!(
-  username: "Francine",
-  email: "francine@users.com",
-  password: default_password
-)
-user7 = User.create!(
-  username: "Georgia",
-  email: "georgia@users.com",
-  password: default_password
-)
-user8 = User.create!(
-  username: "Jerry",
-  email: "jerry@users.com",
-  password: default_password
-)
-users = [user1, user2, user3, user4, user5, user6, user7, user8]
+
+user_names = ["David", "Brianna", "Chizu", "Andy", "Eric", "Francine", "Georgia", "Jerry"]
+
+users = []
+user_names.each do |user|
+  users << User.create!(
+    username: user,
+    email: "#{user.downcase}@users.com",
+    password: default_password
+  )
+end
 
 users.map do |user|
   file = File.open("db/support/#{user.username}.jpg")
@@ -50,36 +20,26 @@ end
 puts "---done---"
 
 puts "---creating fake chefs---"
-chef1 = Chef.create!(
-  address: "Amsterdam 300, Hipódromo, Mexico City, CDMX",
-  user: user1
-)
-chef2 = Chef.create!(
-  address: "Tlacotalpan 30, Roma Sur, Mexico City, CDMX",
-  user: user2
-)
-chef3 = Chef.create!(
-  address: "Av México 49, Hipódromo, Mexico City, CDMX",
-  user: user4
-)
-chef4 = Chef.create!(
-  address: "Tapachula 88, Roma Norte, Mexico City, CDMX",
-  user: user5
-)
-chef5 = Chef.create!(
-  address: "Avenida Tamaulipas 30, La Condesa, Mexico City, CDMX",
-  user: user6
-)
-chef6 = Chef.create!(
-  address: "Puebla 77, Roma Norte, Mexico City, CDMX",
-  user: user7
-)
-chef7 = Chef.create!(
-  address: "Culiacan 26, Hipódromo, Mexico City, CDMX",
-  user: user8
-)
+chefs = []
+chefs_address = ["Amsterdam 300, Hipódromo, Mexico City, CDMX", "Tlacotalpan 30, Roma Sur, Mexico City, CDMX", "Av México 49, Hipódromo, Mexico City, CDMX",
+                  "Tapachula 88, Roma Norte, Mexico City, CDMX", "Avenida Tamaulipas 30, La Condesa, Mexico City, CDMX",
+                  "Puebla 77 Roma Norte, Mexico City, CDMX", "Culiacan 26, Hipódromo, Mexico City, CDMX"
+                ]
+chefs_address_index = 0
+chefs_bio = ["I have been cooking since I was little. Cooking and sharing is my passion!",
+              "I have travelled all over the world, and my motto is to cook outside the box!",
+              "I just graduated from culinary school in Mexico City, and my dream is to own a restaurant!",
+              "I always share my food with neighbours and friends nearby. It is now your turn to try!"
+            ]
+
+users[0..5].each do |user|
+  chefs << Chef.create!(
+    address: chefs_address[(chefs_address_index += 1)],
+    user: user,
+    bio: chefs_bio.sample
+  )
+end
 puts "---done---"
-chefs = [chef1, chef2, chef3, chef4, chef5, chef6, chef7]
 
 puts "---creating fake meals---"
 
