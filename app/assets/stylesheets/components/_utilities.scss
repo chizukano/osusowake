@@ -1,0 +1,15 @@
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.grid-lg-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+}
+
+@media (min-width: 992px) {
+  .grid-lg-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}

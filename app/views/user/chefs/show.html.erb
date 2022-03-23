@@ -2,63 +2,53 @@
   <h1 class="mt-3 mb-3">Welcome <strong><%= @chef.user.username %>!</h1>
 </div>
 <hr>
-<div class="container mb-3">
-  <h3>What's Cooking?</h3>
-  <% @chef.meals.each do |meal| %>
-    <% if meal.cooking_sessions.exists? %>
-      <% meal.cooking_sessions.each do |cooking_session|%>
-        <div class="card mb-2 overflow-hidden">
-          <div class="d-flex">
-            <%= cl_image_tag meal.photo.key,  height:92, width:130, crop: :fill %>
-            <div class="p-3">
-              <h5 class="card-title"><%= meal.name %></h5>
-              <h6 class="text-muted"><small>pickup in</small> <%= distance_of_time_in_words_to_now(cooking_session.end_at) %></h6>
-            </div>
-          </div>
-          <div class="progress position-relative rounded-0" style="1rem">
-            <div class="progress-bar progress-bar bg-light-green fs-3" role="progressbar"
-            style="width: <%= number_to_percentage(cooking_session.ratio_of_portions_reserved * 100, precision: 0) %>;"
-            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-            </div>
-            <div class="text-end flex-grow-1 position-absolute w-100">
-              <%= cooking_session.portions_reserved %>
-              <span class="small">out of</span>
-              <%= pluralize(cooking_session.max_portions, "portion") %>
-              <span class="small  me-2">
-                reserved
-              </span>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  <% end %>
-  <%= link_to "Schedule a cooking", new_user_chef_cooking_session_path, class: "btn btn-success mt-1" %>
-</div>
-<div class="container mb-3">
-  <% if @chef.meals.exists? %>
-    <h3>Your Cookbook</h3>
-    <div class="row">
+<% if @chef.meals.present? %>
+  <div class="container mb-3">
+    <h3>What's Cooking?</h3>
+    <div class="grid-lg-2">
       <% @chef.meals.each do |meal| %>
-        <div class="col-sm-4 col-lg-2">
-          <div class="card h-100">
-            <div class="position-relative">
-              <%= cl_image_tag meal.photo.key, class: "card-img img-fluid", height:300, width:300, crop: :fill %>
-              <div class="card-image-info">
-                <h5 class="card-title mb-0"><%= meal.name %></h5>
+        <% if meal.cooking_sessions.exists? %>
+          <% meal.cooking_sessions.each do |cooking_session|%>
+            <div class="card overflow-hidden">
+              <div class="d-flex flex-grow-1">
+                <%= cl_image_tag meal.photo.key,  height:180, width:260, crop: :fill, class: "img-fluid object-fit-cover", style: "max-width: 130px" %>
+                <div class="p-3">
+                  <h5 class="card-title"><%= meal.name %></h5>
+                  <h6 class="text-muted"><small>pickup in</small> <%= distance_of_time_in_words_to_now(cooking_session.end_at) %></h6>
+                </div>
+              </div>
+              <div class="progress position-relative rounded-0" style="1rem">
+                <div class="progress-bar progress-bar bg-light-green fs-3" role="progressbar"
+                style="width: <%= number_to_percentage(cooking_session.ratio_of_portions_reserved * 100, precision: 0) %>;"
+                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                </div>
+                <div class="text-end flex-grow-1 position-absolute w-100">
+                  <%= cooking_session.portions_reserved %>
+                  <span class="small">out of</span>
+                  <%= pluralize(cooking_session.max_portions, "portion") %>
+                  <span class="small  me-2">
+                    reserved
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      <% end %>
-        <div class="col-sm-4 col-lg-2 d-flex">
-          <%= link_to new_user_chef_meal_path, class:"btn btn-outline-success w-100 d-flex align-items-center justify-content-center" do %>
-            <%= icon "fa", "circle-plus", class: "me-1" %>
-            Add a new dish
           <% end %>
-        </div>
-  <% end %>
-</div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="container mb-3">
+    <%= render "user/chefs/cookbook_card", chef: @chef %>
+  </div>
+<% else %>
+  <div class="container mb-3">
+    <h3>Let's make your cookbook!</h3>
+    <%= link_to new_user_chef_meal_path, class:"btn btn-outline-success" do %>
+      <%= icon "fa", "circle-plus", class: "me-1" %>
+      Add a new dish
+    <% end %>
+  </div>
+<% end %>
 <br>
 <div class="container">
   <ul class="list-unstyled">
