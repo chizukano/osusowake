@@ -1,0 +1,14 @@
+<div class="d-flex align-items-center">
+  <%= cl_image_tag(
+    @cooking_session.chef.user.photo.key,
+    gravity: "face",
+    width: 150,
+    height: 150,
+    crop: :fill,
+    class: "avatar"
+  ) %>
+  <div class="balloon2-left">
+    <p>Hi, I am chef <%= @cooking_session.chef_name %>!</p>
+    <p><%= @cooking_session.meal.description %></p>
+  </div>
+</div>

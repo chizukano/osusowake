@@ -4,9 +4,8 @@
       <div class="container">
         <h4><%= @cooking_session.meal.name %></h4>
         <%= cl_image_tag @cooking_session.meal.photo.key, class: "card-img-top mb-2 img-fluid rounded", width: 1000,  height: 500, crop: :fill %>
-        <p><%= @cooking_session.meal.description %></p>
+          <%= render "cooking_sessions/description_card", cooking_session: @cooking_session %>
       </div>
-
     </div>
     <div class="col-5 mt-5">
       <%= render "user/chefs/card", chef: @cooking_session.chef %>
