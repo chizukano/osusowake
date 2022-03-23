@@ -41,7 +41,7 @@
     <div class="row">
       <% @chef.meals.each do |meal| %>
         <div class="col-sm-4 col-lg-2">
-          <div class="card text-black h-100">
+          <div class="card h-100">
             <div class="position-relative">
               <%= cl_image_tag meal.photo.key, class: "card-img img-fluid", height:300, width:300, crop: :fill %>
               <div class="card-image-info">
@@ -51,16 +51,18 @@
           </div>
         </div>
       <% end %>
-    </div>
+        <div class="col-sm-4 col-lg-2 d-flex">
+          <%= link_to new_user_chef_meal_path, class:"btn btn-outline-success w-100 d-flex align-items-center justify-content-center" do %>
+            <%= icon "fa", "circle-plus", class: "me-1" %>
+            Add a new dish
+          <% end %>
+        </div>
   <% end %>
 </div>
-<%# display past cooking sessions? %>
+<br>
 <div class="container">
-<ul class="list-unstyled">
-  <li>
-    <%= link_to "Add a new dish", new_user_chef_meal_path, class: "btn btn-success mb-5" %>
-  </li>
-  <li><%= link_to "Your profile page", user_chef_path, class: "btn btn-outline-success mt-1" %></li>
-  <li><%= link_to "Explore dishes from other chefs!", cooking_sessions_path, class: "btn btn-outline-success mt-1" %></li>
-</ul>
+  <ul class="list-unstyled">
+    <li><%= link_to "Your profile page", user_chef_path, class: "btn btn-outline-success mt-1" %></li>
+    <li><%= link_to "Explore dishes from other chefs!", cooking_sessions_path, class: "btn btn-outline-success mt-1" %></li>
+  </ul>
 </div>
