@@ -1,22 +1,26 @@
 .card-homepage {
   overflow: hidden;
-  height: 200px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
   border-radius: 5px;
   margin-bottom: 30px;
-  font-family: Roboto;
 
   img {
-    height: 100%;
-    width: 350px;
-    object-fit: cover;
+    max-width: 350px;
+  }
+
+  h1 {
+    font-weight: bold;
+    font-style: oblique;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
   }
 
   h2 {
-    font-weight: bold;
+    font-weight: bolder;
     font-style: oblique;
     font-size: 20px;
     font-weight: bold;
