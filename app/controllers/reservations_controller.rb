@@ -15,6 +15,14 @@ class ReservationsController < ApplicationController
   def show
     @reservation = Reservation.find(params[:id])
     @cooking_session = @reservation.cooking_session
+
+    @markers = [
+      { lat: @cooking_session.latitude,
+        lng: @cooking_session.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { cooking_session: @cooking_session }),
+        image_url: helpers.asset_url('folk-logo2.png')
+      }
+    ]
   end
 
   private
