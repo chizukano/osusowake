@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
   resources :reservations, only: %i[show]
 
+  resource :current_location, only: %i[create]
   namespace :user do
     resource :chef, only: %i[new create show] do
       resource :meal, only: %i[new create]

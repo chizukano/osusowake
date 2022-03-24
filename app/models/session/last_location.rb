@@ -7,7 +7,7 @@ class Session::LastLocation
     best_result = Geocoder.search(query).first
     return false if best_result.nil?
 
-    @session[:address] = query
+    @session[:address] = best_result.address
     @session[:max_distance] = max_distance.to_i
     @session[:latitude] = best_result.latitude
     @session[:longitude] = best_result.longitude

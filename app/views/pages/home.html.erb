@@ -4,13 +4,18 @@
     <p>Try unique and homemade meals from your neighbours</p>
 
     <div class="col-6 col-sm-5 col-md-4 col-lg-3">
-    <%= simple_form_for :search, url: cooking_sessions_path, method: :get do |f| %>
-      <%= f.input :query,
-        placeholder: "Search from your location",
-        label: false
-      %>
-      <%= submit_tag "Search", class: "btn btn-success w-50" %>
-    <% end %>
+      <%= simple_form_for :search, url: cooking_sessions_path, method: :get do |f| %>
+        <%= f.input :query,
+          placeholder: "Search from your location",
+          label: false
+        %>
+        <%= submit_tag "Search", class: "btn btn-success w-50" %>
+      <% end %>
+      <%= form_for(:location, url: current_location_path, data: { controller: "current-location" }) do |f| %>
+        <%= hidden_field :location, :latitude, data: { current_location_target: "latitudeInput" } %>
+        <%= hidden_field :location, :longitude, data: { current_location_target: "longitudeInput" } %>
+        <%= f.submit "My Location", data: { action: "click->current-location#getPosition" } %>
+      <% end %>
     </div>
   </div>
 </div>
