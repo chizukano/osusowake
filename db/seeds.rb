@@ -37,7 +37,7 @@ chefs_bio = ["I have been cooking since I was little. Cooking and sharing is my 
               "I always share my food with neighbours and friends nearby. It is now your turn to try!"
             ]
 
-chefs_channel = ["tilldays"]
+chefs_channel = ["PlantandGather"]
 
 users[0..6].each do |user|
   chefs << Chef.create!(
