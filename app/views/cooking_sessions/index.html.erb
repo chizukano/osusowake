@@ -1,12 +1,10 @@
 <div class="container py-3">
   <h5 class="text-left mb-3"><strong>Ready in a few hours!</strong></h5>
   <div class="row">
-    <% @cooking_sessions.upcoming.limit(6).each do |cooking_session| %>
-      <% if cooking_session.created_by != current_user %>
+    <% @cooking_sessions.not_from(current_user&.chef).upcoming.limit(6).each do |cooking_session| %>
         <div class="col-4 mb-3">
           <%= render "cooking_sessions/card", cooking_session: cooking_session %>
         </div>
-      <% end %>
     <% end %>
   </div>
 
@@ -14,7 +12,7 @@
 
   <h5 class="text-left mb-3"><strong>Check out other meals your neighbors are cooking!</strong></h5>
   <div class="row">
-    <% @cooking_sessions_near.not_from(current_user.chef).each do |cooking_session| %>
+    <% @cooking_sessions_near.not_from(current_user&.chef).each do |cooking_session| %>
       <div class="col-4 mb-3">
         <%= render "cooking_sessions/card", cooking_session: cooking_session %>
       </div>
