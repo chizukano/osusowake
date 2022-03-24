@@ -1,46 +1,13 @@
 .card-homepage {
   overflow: hidden;
-  background: white;
+  background: rgba(249, 245, 245, 0.545);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
-  align-items: center;
   border-radius: 5px;
   margin-bottom: 30px;
 
   img {
-    max-width: 350px;
-  }
-
-  h1 {
-    font-weight: bold;
-    font-style: oblique;
-    font-size: 20px;
-    font-weight: bold;
-    margin: 0;
-  }
-
-  h2 {
-    font-weight: bolder;
-    font-style: oblique;
-    font-size: 20px;
-    font-weight: bold;
-    margin: 0;
-  }
-
-  p {
-    font-size: 15px;
-    line-height: 1.4;
-    opacity: .7;
-    margin-bottom: 0;
-    margin-top: 8px;
-  }
-
-  .btn {
-    margin-top: 5px;
-    width: 100%;
-    padding: 3px;
-    font-size: small;
-    border-radius: 2px;
+    max-width: 400px;
   }
 }
 
