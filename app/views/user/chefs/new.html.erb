@@ -5,7 +5,7 @@
 <%# use pundit to prevent non-users from becoming a chef %>
   <%= simple_form_for [@chef], url: user_chef_path do |f| %>
     <%= f.input :address, placeholder: "Enter your address", label: false %>
-    <%= f.input :bio, placeholder: "What's your cooking story behind?", label: false %>
+    <%= f.input :bio, placeholder: "What's the story behind your cooking experience?", label: false %>
     <%= f.submit "Submit", class: "btn btn-success mb-3" %>
   <% end %>
 </div>
