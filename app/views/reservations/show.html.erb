@@ -1,51 +1,53 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="card col-sm-10 col-lg-5 bg-white m-3 p-3">
-      <div class="card-text text-center">
-        <h5>Thank you for your Osusowake order, <%= @reservation.user.username %>!</h5>
-        <div class="mb-3">
-          <%= cl_image_tag(
-            current_user.photo.key,
-            gravity: "face",
-            width: 150,
-            height: 150,
-            crop: :fill,
-            class: "avatar-large"
-          ) %>
-          <%= image_tag "folk-logo2.png", alt: "osusowake", width:20, height: 20 %>
+    <div class="col-sm-10 col-lg-5">
+      <div class="card bg-white m-3 p-3">
+        <div class="card-text text-center">
+          <h5>Thank you for your Osusowake order, <%= @reservation.user.username %>!</h5>
+          <div class="mb-3">
             <%= cl_image_tag(
-              @cooking_session.meal.photo.key,
-              width: 200,
-              height: 200,
+              current_user.photo.key,
+              gravity: "face",
+              width: 150,
+              height: 150,
               crop: :fill,
-              class: "avatar-food"
+              class: "avatar-large"
             ) %>
-          <%= image_tag "folk-logo2.png", alt: "osusowake", width:20, height: 20 %>
-          <%= cl_image_tag(
-            @cooking_session.chef.user.photo.key,
-            gravity: "face",
-            width: 150,
-            height: 150,
-            crop: :fill,
-            class: "avatar-large"
-          ) %>
-        </div>
+            <%= image_tag "folk-logo2.png", alt: "osusowake", width:20, height: 20 %>
+              <%= cl_image_tag(
+                @cooking_session.meal.photo.key,
+                width: 200,
+                height: 200,
+                crop: :fill,
+                class: "avatar-food"
+              ) %>
+            <%= image_tag "folk-logo2.png", alt: "osusowake", width:20, height: 20 %>
+            <%= cl_image_tag(
+              @cooking_session.chef.user.photo.key,
+              gravity: "face",
+              width: 150,
+              height: 150,
+              crop: :fill,
+              class: "avatar-large"
+            ) %>
+          </div>
 
-        <div>
-          <p class="mb-0"><%= @cooking_session.chef.user.username %> will be waiting for you in <strong><%= distance_of_time_in_words_to_now(@cooking_session.end_at) %></strong> at</p>
-          <p><%= @cooking_session.address %></p>
-        </div>
+          <div>
+            <p class="mb-0"><%= @cooking_session.chef.user.username %> will be waiting for you in <strong><%= distance_of_time_in_words_to_now(@cooking_session.end_at) %></strong> at</p>
+            <p><%= @cooking_session.address %></p>
+          </div>
 
-        <div style="height: 200px;"
-          class="mb-1 rounded"
-          data-controller="mapbox"
-          data-mapbox-markers-value="<%= @markers.to_json %>"
-          data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          <div style="height: 200px;"
+            class="mb-1 rounded"
+            data-controller="mapbox"
+            data-mapbox-markers-value="<%= @markers.to_json %>"
+            data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
         </div>
       </div>
-    </div>
-      <div class="m-1 px-3">
+      <div class="m-1 px-3 text-end">
         <%= link_to "Keep browsing", cooking_sessions_path, class: "btn btn-outline-success mb-2" %>
       </div>
+    </div>
   </div>
 </div>

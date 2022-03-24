@@ -1,4 +1,6 @@
 class CurrentLocationsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[create]
+
   def create
     last_location.update_with(query: location_params.values, max_distance: 20)
 

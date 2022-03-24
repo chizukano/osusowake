@@ -21,10 +21,15 @@ puts "---done---"
 
 puts "---creating fake chefs---"
 chefs = []
-chefs_address = ["Amsterdam 300, Hipódromo, Mexico City, CDMX", "Tlacotalpan 30, Roma Sur, Mexico City, CDMX", "Av México 49, Hipódromo, Mexico City, CDMX",
-                  "Tapachula 88, Roma Norte, Mexico City, CDMX", "Avenida Tamaulipas 30, La Condesa, Mexico City, CDMX",
-                  "Puebla 77 Roma Norte, Mexico City, CDMX", "Culiacan 26, Hipódromo, Mexico City, CDMX"
-                ]
+chefs_address = [
+  "Amsterdam 300, Hipódromo, Mexico City, CDMX",
+  "Tlacotalpan 30, Roma Sur, Mexico City, CDMX",
+  "Av México 49, Hipódromo, Mexico City, CDMX",
+  "Tapachula 88, Roma Norte, Mexico City, CDMX",
+  "Avenida Tamaulipas 30, La Condesa, Mexico City, CDMX",
+  "Puebla 77 Roma Norte, Mexico City, CDMX",
+  "Culiacan 26, Hipódromo, Mexico City, CDMX"
+]
 chefs_address_index = 0
 chefs_bio = ["I have been cooking since I was little. Cooking and sharing is my passion!",
               "I have travelled all over the world, and my motto is to cook outside the box!",
@@ -34,9 +39,9 @@ chefs_bio = ["I have been cooking since I was little. Cooking and sharing is my 
 
 chefs_channel = ["tilldays"]
 
-users[0..5].each do |user|
+users[0..6].each do |user|
   chefs << Chef.create!(
-    address: chefs_address[(chefs_address_index += 1)],
+    address: chefs_address[(chefs_address_index += 1) % chefs_address.size],
     user: user,
     bio: chefs_bio.sample,
     twitch_channel: chefs_channel
@@ -46,7 +51,8 @@ puts "---done---"
 
 puts "---creating fake meals---"
 
-meal_names = ["Chicken Butter Curry", "Caesar Salad", "Chicken Ramen",
+meal_names = ["Chicken Butter Curry",
+              "Caesar Salad", "Chicken Ramen",
               "Shrimp Pasta with Creamy Tomato Sauce", "Wonton Soup",
               "Fresh Pasta", "Salmon with Tomato Soup", "Chocolate Chip Cookies", "Guacamole Dip",
               "Meatball Pasta", "Cinnamon Roll", "Walnut Bread", "Pasta Salad", "Steamed Dumplings",
