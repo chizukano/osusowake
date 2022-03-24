@@ -44,7 +44,7 @@ users[0..6].each do |user|
     address: chefs_address[(chefs_address_index += 1) % chefs_address.size],
     user: user,
     bio: chefs_bio.sample,
-    twitch_channel: chefs_channel
+    twitch_channel: chefs_channel.sample
   )
 end
 puts "---done---"

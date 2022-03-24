@@ -36,7 +36,6 @@ gem 'devise'
 
 gem 'geocoder'
 gem 'cloudinary', '~> 1.16.0'
-gem "groupdate"
 
 gem 'flatpickr'
 

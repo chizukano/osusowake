@@ -11,6 +11,10 @@ class CookingSession < ApplicationRecord
   # attribute :max_portions, :integer, default: 1
 
   scope :upcoming, -> { order(end_at: :asc).where("end_at > ?", Time.current) }
+  scope :today, -> { where("end_at BETWEEN :day_start AND :day_end", day_start: Date.current.beginning_of_day, day_end: Date.current.end_of_day) }
+  scope :tomorrow_onwards, -> { where("end_at > ?", Time.current + 24.hours) }
+
+  scope :not_from, ->(chef) { where.not(meal: { chef: chef }) }
 
   def chef_name
     meal.chef.user.username

@@ -21,7 +21,7 @@ class User::CookingSessionsController < ApplicationController
   private
 
   def cooking_session_params
-    params.require(:cooking_session).permit(:max_portions, :end_at, :meal_id)
+    params.require(:cooking_session).permit(:max_portions, :end_at, :meal_id, :streaming)
   end
 
 end

@@ -18,7 +18,8 @@ class CookingSessionsController < ApplicationController
     update_last_location if search_params[:query].present?
 
     if last_location.present?
-      @cooking_sessions = CookingSession.includes(meal: { chef: :user }).near(last_location.address, last_location.max_distance)
+      @cooking_sessions = CookingSession.includes(meal: { chef: :user })
+      @cooking_sessions_near = @cooking_sessions.near(last_location.address, last_location.max_distance)
     else
       @cooking_sessions = CookingSession.includes(meal: { chef: :user }).all
     end
