@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
   def last_location
     @last_location ||= Session::LastLocation.new(session)
   end
+
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
 end

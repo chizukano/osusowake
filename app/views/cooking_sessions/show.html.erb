@@ -39,3 +39,7 @@
     </div>
   </div>
 </div>
+
+<% content_for :meta_title, "#{@cooking_session.meal.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @cooking_session.meal.description %>
+<% content_for :meta_image, cl_image_path(@cooking_session.meal.photo.key) %>
