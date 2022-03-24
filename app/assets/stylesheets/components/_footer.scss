@@ -9,8 +9,8 @@
 }
 
 .footer {
-  background: $ow-green-5;
-  color: $ow-green-1;
+  background: $ow-green-1;
+  color: $ow-green-4;
 }
 
 .footer-container {
@@ -23,7 +23,7 @@
   justify-content: center;
 
   a {
-    color: #4D6649;
+    color: $ow-green-4;
     opacity: 0.15;
     text-decoration: none;
     font-size: 24px;
