@@ -1,5 +1,5 @@
 <% if @cooking_session.streaming? %>
-  <%= render "user/chefs/streaming_card" %>
+  <%= render "user/chefs/streaming_panel", cooking_session: @cooking_session %>
 <% end %>
 <div class="container my-3 p-2 bg-white">
   <div class="row">
