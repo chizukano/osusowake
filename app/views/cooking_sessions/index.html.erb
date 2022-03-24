@@ -2,9 +2,11 @@
   <h5 class="text-left mb-3"><strong>Ready in a few hours!</strong></h5>
   <div class="row">
     <% @cooking_sessions.upcoming.first(6).each do |cooking_session| %>
-      <div class="col-4 mb-3">
-        <%= render "cooking_sessions/card", cooking_session: cooking_session %>
-      </div>
+      <% if cooking_session.created_by != current_user %>
+        <div class="col-4 mb-3">
+          <%= render "cooking_sessions/card", cooking_session: cooking_session %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 
@@ -13,11 +15,13 @@
   <h5 class="text-left mb-3"><strong>Check out other meals your neighbors are cooking!</strong></h5>
   <div class="row">
     <% @cooking_sessions.each do |cooking_session| %>
-      <div class="col-4 mb-3">
+      <% if cooking_session.created_by != current_user %>
+        <div class="col-4 mb-3">
 
-        <%= render "cooking_sessions/card", cooking_session: cooking_session %>
+          <%= render "cooking_sessions/card", cooking_session: cooking_session %>
 
-      </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
