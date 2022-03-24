@@ -1,6 +1,8 @@
 class CurrentLocationsController < ApplicationController
   def create
     last_location.update_with(query: location_params.values, max_distance: 20)
+
+    redirect_to cooking_sessions_path
   end
 
   private

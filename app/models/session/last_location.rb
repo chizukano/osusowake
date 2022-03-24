@@ -6,10 +6,8 @@ class Session::LastLocation
   def update_with(query:, max_distance:)
     best_result = Geocoder.search(query).first
     return false if best_result.nil?
-    raise
-    current_address = query.is_a?(String) ? query : "send best result display_name here"
 
-    @session[:address] = current_address
+    @session[:address] = best_result.address
     @session[:max_distance] = max_distance.to_i
     @session[:latitude] = best_result.latitude
     @session[:longitude] = best_result.longitude
