@@ -1,3 +1,6 @@
+<% if @cooking_session.streaming? %>
+  <%= render "user/chefs/streaming_card" %>
+<% end %>
 <div class="container my-3 p-2 bg-white">
   <div class="row">
     <div class="col-7 mt-3">

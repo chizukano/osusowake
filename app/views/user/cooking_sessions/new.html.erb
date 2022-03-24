@@ -1,16 +1,24 @@
 <div class="container mt-3">
-  <h5>Let's schedule a cooking session!</h5>
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <h5>Let's schedule a cooking session!</h5>
+      <%= simple_form_for [@cooking_session], url: user_chef_cooking_session_path do |f| %>
+        <%= f.association :meal, collection: current_user.chef.meals, label: "Select a dish you're cooking" %>
+        <%= f.input :max_portions, label: "Number of portions:" %>
+        <%= f.input :end_at,
+            html5: true,
+            as: :datetime,
+            label: "Will be prepared by (choose date and time):",
+            input_html: { data: { controller: "flatpickr" } }
+        %>
+        <%= f.input :streaming,
+                    label: "Will you stream this?",
+                    disabled: !current_user.chef.streams?,
+                    hint: (current_user.chef.streams? ? false : "You need to set a twitch channel in order to user this.") %>
+        <%= f.submit "Let's OSUSOWAKE!", class: "btn btn-success mb-3" %>
+      <% end %>
+      <%= link_to "Back to your cookbook", user_chef_path, class: "btn btn-outline-success mt-1" %>
+    </div>
+  </div>
 <%# use pundit to prevent non-chefs from making a meal %>
-  <%= simple_form_for [@cooking_session], url: user_chef_cooking_session_path do |f| %>
-    <%= f.association :meal, collection: current_user.chef.meals, label: "Select a dish you're cooking" %>
-    <%= f.input :max_portions, label: "Number of portions:" %>
-    <%= f.input :end_at,
-        html5: true,
-        as: :datetime,
-        label: "Will be prepared by (choose date and time):",
-        input_html: { data: { controller: "flatpickr" } }
-    %>
-    <%= f.submit "Let's OSUSOWAKE!", class: "btn btn-success mb-3" %>
-  <% end %>
-    <%= link_to "Back to your cookbook", user_chef_path, class: "btn btn-outline-success mt-1" %>
 </div>

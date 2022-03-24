@@ -1,7 +1,7 @@
 puts "---creating fake users---"
 default_password = "123456"
 
-user_names = ["David", "Brianna", "Chizu", "Andy", "Eric", "Francine", "Georgia", "Jerry"]
+user_names = ["David", "Andy", "Brianna", "Chizu", "Eric", "Francine", "Georgia", "Jerry"]
 
 users = []
 user_names.each do |user|
@@ -21,10 +21,15 @@ puts "---done---"
 
 puts "---creating fake chefs---"
 chefs = []
-chefs_address = ["Amsterdam 300, Hipódromo, Mexico City, CDMX", "Tlacotalpan 30, Roma Sur, Mexico City, CDMX", "Av México 49, Hipódromo, Mexico City, CDMX",
-                  "Tapachula 88, Roma Norte, Mexico City, CDMX", "Avenida Tamaulipas 30, La Condesa, Mexico City, CDMX",
-                  "Puebla 77 Roma Norte, Mexico City, CDMX", "Culiacan 26, Hipódromo, Mexico City, CDMX"
-                ]
+chefs_address = [
+  "Amsterdam 300, Hipódromo, Mexico City, CDMX",
+  "Tlacotalpan 30, Roma Sur, Mexico City, CDMX",
+  "Av México 49, Hipódromo, Mexico City, CDMX",
+  "Tapachula 88, Roma Norte, Mexico City, CDMX",
+  "Avenida Tamaulipas 30, La Condesa, Mexico City, CDMX",
+  "Puebla 77 Roma Norte, Mexico City, CDMX",
+  "Culiacan 26, Hipódromo, Mexico City, CDMX"
+]
 chefs_address_index = 0
 chefs_bio = ["I have been cooking since I was little. Cooking and sharing is my passion!",
               "I have travelled all over the world, and my motto is to cook outside the box!",
@@ -32,20 +37,24 @@ chefs_bio = ["I have been cooking since I was little. Cooking and sharing is my 
               "I always share my food with neighbours and friends nearby. It is now your turn to try!"
             ]
 
-users[0..5].each do |user|
+chefs_channel = ["tilldays"]
+
+users[0..6].each do |user|
   chefs << Chef.create!(
-    address: chefs_address[(chefs_address_index += 1)],
+    address: chefs_address[(chefs_address_index += 1) % chefs_address.size],
     user: user,
-    bio: chefs_bio.sample
+    bio: chefs_bio.sample,
+    twitch_channel: chefs_channel.sample
   )
 end
 puts "---done---"
 
 puts "---creating fake meals---"
 
-meal_names = ["Chicken Butter Curry", "Caesar Salad", "Chicken Ramen", "Green Salad",
-              "Guacamole Dip", "Shrimp Pasta with Creamy Tomato Sauce",
-              "Fresh Pasta", "Salmon with Tomato Soup", "Chocolate Chip Cookies", "Wonton Soup",
+meal_names = ["Chicken Butter Curry",
+              "Caesar Salad", "Chicken Ramen",
+              "Shrimp Pasta with Creamy Tomato Sauce", "Wonton Soup",
+              "Fresh Pasta", "Salmon with Tomato Soup", "Chocolate Chip Cookies", "Guacamole Dip",
               "Meatball Pasta", "Cinnamon Roll", "Walnut Bread", "Pasta Salad", "Steamed Dumplings",
               "Arugula Mozzarella Pizza", "Chocolate Donuts", "Cauliflower Dip", "Taiyaki Waffle"]
 
@@ -84,7 +93,8 @@ meals[0..3].each do |meal|
     latitude: chef.latitude,
     start_at: Faker::Time.backward(days: 1, period: :morning, format: :long),
     end_at: Faker::Time.backward(days: 1, period: :afternoon, format: :long),
-    meal: meal
+    meal: meal,
+    streaming: false
   )
 end
 
@@ -97,7 +107,8 @@ meals[4..6].each do |meal|
     latitude: chef.latitude,
     start_at: Faker::Time.backward(days: 1, period: :afternoon, format: :long),
     end_at: Faker::Time.backward(days: 1, period: :evening, format: :long),
-    meal: meal
+    meal: meal,
+    streaming: false
   )
 end
 puts "---done---"
@@ -112,7 +123,8 @@ meals[7..13].each do |meal|
     latitude: chef.latitude,
     start_at: Time.current + rand(1..2).hours,
     end_at: Time.current + rand(3..5).hours,
-    meal: meal
+    meal: meal,
+    streaming: false
   )
 end
 puts "---done---"
@@ -127,9 +139,13 @@ meals[14..19].each do |meal|
     latitude: chef.latitude,
     start_at: Faker::Time.forward(days: 1, period: :morning, format: :long),
     end_at: Faker::Time.forward(days: 1, period: :afternoon, format: :long),
-    meal: meal
+    meal: meal,
+    streaming: false
   )
 end
+
+cooking_sessions.first.update(streaming: true)
+cooking_sessions.last.update(streaming: true)
 
 puts "---done---"
 
