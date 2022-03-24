@@ -42,7 +42,7 @@
   <h3 class="text-center h3 mb-5 text-muted"><strong>LIVE NOW</strong></h3>
   <div class="row">
     <% @cooking_sessions.not_from(current_user&.chef).each do |cooking_session| %>
-      <% if cooking_session.streaming? %>
+      <% if cooking_session.streaming %>
         <div class="col-4 mb-3">
           <%= render "user/chefs/streaming_card", cooking_session: cooking_session %>
         </div>
