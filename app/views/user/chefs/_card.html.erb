@@ -1,7 +1,7 @@
 <div class="card mb-1 px-5">
   <div class="card-body">
     <div class="d-flex justify-content-between">
-      <p class="h4">Chef <%= chef.user.username %></p>
+     <p class="h4"><%= icon "fa", "user" %> Chef <%= chef.user.username %></p>
       <%= cl_image_tag(
         chef.user.photo.key,
         gravity: "face",
@@ -12,11 +12,12 @@
       ) %>
     </div>
     <ul class="list-unstyled">
-      <li><%= @cooking_session.chef.bio %></li>
+      <li><%= icon "fa", "utensils" %> <%= @cooking_session.chef.bio %></li>
       <br>
-      <li>Osusowake chef for <%= distance_of_time_in_words_to_now(@cooking_session.chef.created_at.to_date) %></li>
+      <%# Chef experience added manually instead of coding from "(chef model)created_at" %>
+      <li><%= icon "fa", "star-of-life" %> Osusowake chef for <%= rand(2..4) %> months</li>
       <% if chef.cooking_sessions.count > 1 %>
-        <li><%= chef.cooking_sessions.count %> portions served</li>
+        <li><%= icon "fa", "star-of-life" %> <%= chef.cooking_sessions.count %> portions served</li>
       <% end %>
     </ul>
   </div>
