@@ -1,11 +1,10 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
   <div class="container-fluid">
-    <div class="d-flex flex-row">
-      <%= link_to root_path, class: "navbar-brand" do %>
-          <%= image_tag "folk-logo2.png", alt: "osusowake", width:90, height: 30 %>
+      <%= link_to root_path, class: "navbar-brand d-flex flex-row mx-2" do %>
+        <%= image_tag "folk-logo-white.png", alt: "osusowake", width:40, height: 40, class: "m-1" %>
+        <h2 class="text-white m-2"><strong>OSUSOWAKE</strong></h2>
       <% end %>
-        <h2><strong>OSUSOWAKE</strong></h2>
-    </div>
+
     <%= render "shared/refine_location" if action_name == "index" %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,11 +16,11 @@
         <% if user_signed_in? %>
           <% if current_user.chef.present? %>
             <li class="nav-item">
-              <%= link_to "Chef's Table", "/user/chef/", class: "btn btn-outline-success mx-3" %>
+              <%= link_to "Chef's Table", "/user/chef/", class: "btn btn-outline-info m-2" %>
             </li>
           <% else %>
             <li class="nav-item">
-              <%= link_to "Become a Chef!", "/user/chef/new", class: "btn btn-outline-success mx-3" %>
+              <%= link_to "Become a Chef!", "/user/chef/new", class: "btn btn-outline-info m-2" %>
             </li>
           <% end %>
             <li class="nav-item dropdown">
@@ -31,8 +30,8 @@
               </div>
             </li>
         <% else %>
-          <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
-          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+          <%= link_to "Sign In", new_user_session_path, class: "nav-link text-info" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link text-info" %>
         <% end %>
       </ul>
     </div>
