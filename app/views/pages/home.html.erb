@@ -27,9 +27,9 @@
 <div class="description-container m-4 pt-3 pb-5 text-body-color">
 
 <div class="container py-3">
-  <h3 class="text-center h2 mb-5 text-muted"><strong>TOP OSUSOWAKE PICKS</strong></h3>
+  <h3 class="text-center h2 mb-5 text-muted"><strong>Top OSUSOWAKE picks</strong></h3>
   <div class="row">
-    <% @cooking_sessions.not_from(current_user.chef).upcoming.sample(3).each do |cooking_session| %>
+    <% @cooking_sessions.not_from(current_user&.chef).upcoming.sample(3).each do |cooking_session| %>
         <div class="col-4 mb-3">
           <%= render "cooking_sessions/card", cooking_session: cooking_session %>
         </div>
@@ -39,9 +39,9 @@
 </div>
 
 <div class="container py-3">
-  <h3 class="text-center h2 mb-5 text-muted"><strong>STREAMING FROM KITCHEN</strong></h3>
+  <h3 class="text-center h3 mb-5 text-muted"><strong>LIVE NOW</strong></h3>
   <div class="row">
-    <% @cooking_sessions.not_from(current_user.chef).each do |cooking_session| %>
+    <% @cooking_sessions.not_from(current_user&.chef).each do |cooking_session| %>
       <% if cooking_session.streaming? %>
         <div class="col-4 mb-3">
           <%= render "user/chefs/streaming_card", cooking_session: cooking_session %>
@@ -49,10 +49,11 @@
       <% end %>
     <% end %>
   </div>
-  <%= link_to "Browse More", cooking_sessions_path, class: "btn btn-outline-success" %>
 </div>
 
 <div class="container">
   <h3 class="text-center h2 mb-5 text-muted"><strong>How OSUSOWAKE works</strong></h3>
   <%= render "pages/card" %>
 </div>
+
+<%# not_from(current_user&.chef). %>
