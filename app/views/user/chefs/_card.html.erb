@@ -12,6 +12,8 @@
       ) %>
     </div>
     <ul class="list-unstyled">
+      <li><%= @cooking_session.chef.bio %></li>
+      <br>
       <li>Osusowake chef for <%= distance_of_time_in_words_to_now(@cooking_session.chef.created_at.to_date) %></li>
       <% if chef.cooking_sessions.count > 1 %>
         <li><%= chef.cooking_sessions.count %> portions served</li>
