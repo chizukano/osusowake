@@ -10,7 +10,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["latitudeInput", "longitudeInput"]
+  static targets = ["latitudeInput", "longitudeInput", "form"]
 
   connect() {
     console.log("connected")
@@ -22,7 +22,7 @@ export default class extends Controller {
       (data) => {
         this.latitudeInputTarget.value = data.coords.latitude
         this.longitudeInputTarget.value = data.coords.longitude
-        this.element.submit()
+        this.formTarget.submit()
       },
       (data) => { console.log(data) }
     )
