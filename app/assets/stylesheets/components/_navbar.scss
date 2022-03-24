@@ -1,18 +1,13 @@
 .navbar-lewagon {
   h2 {
-    font-family: 'PT Serif', serif;
+    font-family: 'Raleway', sans-serif;;
   }
-
   justify-content: space-between;
-  background: $ow-green-5;
+  background: $ow-green-1;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
 }
 
 .navbar {
