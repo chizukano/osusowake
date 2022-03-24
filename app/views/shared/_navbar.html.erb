@@ -2,11 +2,9 @@
   <div class="container-fluid">
     <div class="d-flex flex-row">
       <%= link_to root_path, class: "navbar-brand" do %>
-        <h2>
           <%= image_tag "folk-logo2.png", alt: "osusowake", width:90, height: 30 %>
-          <strong>OSUSOWAKE</strong>
-        </h2>
       <% end %>
+        <h2><strong>OSUSOWAKE</strong></h2>
     </div>
     <%= render "shared/refine_location" if action_name == "index" %>
 
