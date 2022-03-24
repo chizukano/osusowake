@@ -20,6 +20,10 @@ class CookingSession < ApplicationRecord
     meal.name
   end
 
+  def created_by
+    meal.chef.user
+  end
+
   def portions_left
     max_portions - reservations.sum(:portion_count)
   end
