@@ -1,9 +1,7 @@
-
-<%= link_to cooking_session, class: "card text-decoration-none text-black h-100 hoverable" do %>
-
+<%= link_to cooking_session, class: "card text-decoration-none text-black h-100 hoverable overflow-hidden" do %>
   <div class="position-relative">
     <%= cl_image_tag cooking_session.meal.photo.key, class: "card-img-top img-fluid", height:500, width:720, crop: :fill %>
-    <div class="card-image-info">
+    <div class="card-image-info p-3">
       <h5 class="card-title mb-0"><%= cooking_session.meal.name %></h5>
       <p class="card-text mb-0 small">
         <span class="opacity-50">Ready in</span>
