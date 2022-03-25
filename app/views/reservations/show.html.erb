@@ -8,16 +8,16 @@
             <%= cl_image_tag(
               current_user.photo.key,
               gravity: "face",
-              width: 150,
-              height: 150,
+              width: 56,
+              height: 56,
               crop: :fill,
               class: "avatar-large"
             ) %>
             <%= image_tag "folk-logo2.png", alt: "osusowake", width:20, height: 20 %>
               <%= cl_image_tag(
                 @cooking_session.meal.photo.key,
-                width: 150,
-                height: 150,
+                width: 120,
+                height: 120,
                 crop: :fill,
                 class: "avatar-food"
               ) %>
