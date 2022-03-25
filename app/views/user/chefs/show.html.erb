@@ -49,10 +49,7 @@
     <% end %>
   </div>
 <% end %>
-<br>
-<div class="container">
-  <ul class="list-unstyled">
-    <li><%= link_to "Your profile page", user_chef_path, class: "btn btn-outline-success mt-1" %></li>
-    <li><%= link_to "Explore dishes from other chefs!", cooking_sessions_path, class: "btn btn-outline-success mt-1" %></li>
-  </ul>
+  <div class="d-flex justify-content-start">
+    <%= link_to "Explore meals from other chefs!", cooking_sessions_path, class: "btn btn-outline-secondary mt-1" %></li>
+  </div>
 </div>
