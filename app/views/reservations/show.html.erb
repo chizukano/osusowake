@@ -3,7 +3,7 @@
     <div class="col-sm-10 col-lg-5">
       <div class="card bg-white m-3 p-3">
         <div class="card-text text-center">
-          <h5>Thank you for your Osusowake order, <%= @reservation.user.username %>!</h5>
+          <h5 class="my-3">Thank you for your Osusowake order, <%= @reservation.user.username %>!</h5>
           <div class="mb-3">
             <%= cl_image_tag(
               current_user.photo.key,
@@ -16,8 +16,8 @@
             <%= image_tag "folk-logo2.png", alt: "osusowake", width:20, height: 20 %>
               <%= cl_image_tag(
                 @cooking_session.meal.photo.key,
-                width: 200,
-                height: 200,
+                width: 150,
+                height: 150,
                 crop: :fill,
                 class: "avatar-food"
               ) %>
@@ -32,7 +32,7 @@
             ) %>
           </div>
 
-          <div>
+          <div class="mb-3">
             <p class="mb-0"><%= @cooking_session.chef.user.username %> will be waiting for you in <strong><%= distance_of_time_in_words_to_now(@cooking_session.end_at) %></strong> at</p>
             <p><%= @cooking_session.address %></p>
           </div>

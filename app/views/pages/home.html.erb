@@ -8,7 +8,7 @@
     </div>
   </div>
 </div>
-<div class="bg-secondary py-5 text-white">
+<div class="banner-explanation py-5 text-white">
   <div class="container py-5">
     <div class="row">
       <div class="col-3 text-center"><%= image_tag "folk-logo-white.png", alt: "osusowake", width: 160, height:  160 %></div>
@@ -17,7 +17,7 @@
 
         <br>
         <h2 class="fs-5"><em>OSUSOWAKE is Sharing <%= icon "fa", "utensils" %> and Caring</em> <%= icon "fa", "heart" %></h2>
-        <p  class="fs-6">The Japanese term Osusowake /おすそわけ/ means sharing something with neighbours.
+        <p  class="fs-7">The Japanese term Osusowake /おすそわけ/ means sharing something with neighbours.
         Osuso(“hem of kimono”) Wake(“share”) is a traditional communication style to pay it forward and care about neighbours and friends.
         </p>
       </div>
@@ -29,13 +29,15 @@
 <div class="container py-3">
   <h3 class="text-center h2 mb-5 text-muted"><strong>Top OSUSOWAKE picks</strong></h3>
   <div class="row">
-    <% @cooking_sessions.not_from(current_user&.chef).upcoming.sample(3).each do |cooking_session| %>
-        <div class="col-4 mb-3">
+    <% @cooking_sessions.not_from(current_user&.chef).upcoming.sample(4).each do |cooking_session| %>
+        <div class="col-3 mb-3">
           <%= render "cooking_sessions/card", cooking_session: cooking_session %>
         </div>
     <% end %>
   </div>
-  <%= link_to "Browse More", cooking_sessions_path, class: "btn btn-outline-success" %>
+  <div class="d-flex justify-content-end">
+    <%= link_to "Browse More", cooking_sessions_path, class: "btn btn-outline-secondary text-end" %>
+  </div>
 </div>
 
 <div class="container py-3">
@@ -55,5 +57,3 @@
   <h3 class="text-center h2 mb-5 text-muted"><strong>How OSUSOWAKE works</strong></h3>
   <%= render "pages/card" %>
 </div>
-
-<%# not_from(current_user&.chef). %>
