@@ -122,8 +122,8 @@ meals[0..10].each do |meal|
     address: chef.address,
     longitude: chef.longitude,
     latitude: chef.latitude,
-    start_at: Time.current + rand(1..2).hours,
-    end_at: Time.current + rand(3..9).hours,
+    start_at: Time.current,
+    end_at: Time.current + rand(1..4).hours,
     meal: meal,
     streaming: false
   )
