@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-7 mt-3">
       <div class="container">
-        <h3 class="mb-3"><strong><%= @cooking_session.meal.name %></strong></h4>
+        <h3 class="mb-3"><strong><%= @cooking_session.meal.name %></strong></h3>
         <%= cl_image_tag @cooking_session.meal.photo.key, class: "card-img-top mb-2 img-fluid rounded", width: 1000,  height: 500, crop: :fill %>
           <%= render "cooking_sessions/description_card", cooking_session: @cooking_session %>
       </div>
@@ -21,7 +21,7 @@
 
         <div class="card px-3">
           <div class="card-body">
-            <h4 class="mb-4">Do you want some of <%= @cooking_session.chef.user.username %>'s <%= @cooking_session.meal.name %>?</h5>
+            <h4 class="mb-4">Do you want some of <%= @cooking_session.chef.user.username %>'s <%= @cooking_session.meal.name %>?</h4>
             <%= simple_form_for [@cooking_session, @reservation] do |f| %>
               <h6>It will be <mark>ready in <%=  distance_of_time_in_words_to_now(@cooking_session.end_at) %></mark> at <strong><%= @cooking_session.address %></strong></h6>
               <h6>(<%= @cooking_session.distance_to(last_location.coordinates).round(1) %>km away from you)</h6>
