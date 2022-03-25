@@ -14,7 +14,7 @@
           <%= f.input :streaming,
                       label: "Will you stream this?",
                       disabled: !current_user.chef.streams?,
-                      hint: (current_user.chef.streams? ? false : "You need to set a twitch channel in order to user this.") %>
+                      hint: (current_user.chef.streams? ? false : "You need to set a twitch channel in order to use this.") %>
         <div class="d-flex justify-content-end">
           <%= f.submit "Let's OSUSOWAKE!", class: "btn btn-secondary mb-3" %>
         </div>
