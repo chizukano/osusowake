@@ -98,23 +98,23 @@ meals[0..3].each do |meal|
   )
 end
 
-meals[4..6].each do |meal|
-  chef = meal.chef
-  cooking_sessions << CookingSession.create!(
-    max_portions: rand(3..6),
-    address: chef.address,
-    longitude: chef.longitude,
-    latitude: chef.latitude,
-    start_at: Faker::Time.backward(days: 1, period: :afternoon, format: :long),
-    end_at: Faker::Time.backward(days: 1, period: :evening, format: :long),
-    meal: meal,
-    streaming: false
-  )
-end
+# meals[4..6].each do |meal|
+#   chef = meal.chef
+#   cooking_sessions << CookingSession.create!(
+#     max_portions: rand(3..6),
+#     address: chef.address,
+#     longitude: chef.longitude,
+#     latitude: chef.latitude,
+#     start_at: Faker::Time.backward(days: 1, period: :afternoon, format: :long),
+#     end_at: Faker::Time.backward(days: 1, period: :evening, format: :long),
+#     meal: meal,
+#     streaming: false
+#   )
+# end
 puts "---done---"
 
 puts "---creating fake near future cooking sessions---"
-meals[7..14].each do |meal|
+meals[4..11].each do |meal|
   chef = meal.chef
   cooking_sessions << CookingSession.create!(
     max_portions: rand(3..6),
@@ -130,7 +130,7 @@ end
 puts "---done---"
 
 puts "---creating fake future cooking sessions---"
-meals[15..19].each do |meal|
+meals[12..19].each do |meal|
   chef = meal.chef
   cooking_sessions << CookingSession.create!(
     max_portions: rand(3..6),
