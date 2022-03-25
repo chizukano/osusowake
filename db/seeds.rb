@@ -87,7 +87,7 @@ cooking_sessions = []
 meals[0..3].each do |meal|
   chef = meal.chef
   cooking_sessions << CookingSession.create!(
-    max_portions: rand(2..6),
+    max_portions: rand(3..6),
     address: chef.address,
     longitude: chef.longitude,
     latitude: chef.latitude,
@@ -101,7 +101,7 @@ end
 meals[4..6].each do |meal|
   chef = meal.chef
   cooking_sessions << CookingSession.create!(
-    max_portions: rand(2..6),
+    max_portions: rand(3..6),
     address: chef.address,
     longitude: chef.longitude,
     latitude: chef.latitude,
@@ -114,10 +114,10 @@ end
 puts "---done---"
 
 puts "---creating fake near future cooking sessions---"
-meals[7..13].each do |meal|
+meals[7..14].each do |meal|
   chef = meal.chef
   cooking_sessions << CookingSession.create!(
-    max_portions: rand(2..6),
+    max_portions: rand(3..6),
     address: chef.address,
     longitude: chef.longitude,
     latitude: chef.latitude,
@@ -130,10 +130,10 @@ end
 puts "---done---"
 
 puts "---creating fake future cooking sessions---"
-meals[14..19].each do |meal|
+meals[15..19].each do |meal|
   chef = meal.chef
   cooking_sessions << CookingSession.create!(
-    max_portions: rand(2..6),
+    max_portions: rand(3..6),
     address: chef.address,
     longitude: chef.longitude,
     latitude: chef.latitude,
@@ -144,15 +144,12 @@ meals[14..19].each do |meal|
   )
 end
 
-cooking_sessions.first.update(streaming: true)
-cooking_sessions.last.update(streaming: true)
-
 puts "---done---"
 
 puts "---creating fake reservations---"
-5.times do
+10.times do
   Reservation.create!(
-    portion_count: rand(1..2),
+    portion_count: 1,
     user: users.sample,
     cooking_session: cooking_sessions.sample
   )
