@@ -1,7 +1,9 @@
 <div data-controller="current-location">
   <%= simple_form_for :search, url: cooking_sessions_path, method: :get do |f| %>
+
     <div class="position-relative">
       <%= f.input :query,
+        class: "text-end",
         placeholder: "Search from your location",
         label: false
       %>
@@ -10,7 +12,11 @@
       <% end %>
     </div>
 
-    <%= submit_tag "Search", class: "btn btn-success w-50" %>
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-secondary w-50" title="search">
+        Search
+      </button>
+    </div>
   <% end %>
 
   <%= form_for(:location, url: current_location_path, data: { current_location_target: "form" }) do |f| %>
