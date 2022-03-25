@@ -11,7 +11,7 @@
   <h4 class="text-left h3"><strong>Meals nearby</strong></h4>
   <h4 class="text-left mb-3 h5 text-muted">Check out other meals your neighbors are cooking</h4>
   <div class="row">
-    <% @cooking_sessions_near.not_from(current_user&.chef).each do |cooking_session| %>
+    <% @cooking_sessions_near.not_from(current_user&.chef).upcoming.each do |cooking_session| %>
       <div class="col-4 mb-3">
         <%= render "cooking_sessions/card", cooking_session: cooking_session %>
       </div>

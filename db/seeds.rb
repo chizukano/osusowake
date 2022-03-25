@@ -115,7 +115,7 @@ cooking_sessions = []
 puts "---done---"
 
 puts "---creating fake near future cooking sessions---"
-meals[0..10].each do |meal|
+meals[0..8].each do |meal|
   chef = meal.chef
   cooking_sessions << CookingSession.create!(
     max_portions: rand(3..6),
@@ -138,8 +138,8 @@ meals[11..16].each do |meal|
     address: chef.address,
     longitude: chef.longitude,
     latitude: chef.latitude,
-    start_at: Faker::Time.forward(days: 1, period: :morning, format: :long),
-    end_at: Faker::Time.forward(days: 1, period: :afternoon, format: :long),
+    start_at: Time.current,
+    end_at: Time.current + rand(16..30).hours,
     meal: meal,
     streaming: false
   )
