@@ -1,7 +1,7 @@
 <div class="card mb-1 px-5">
   <div class="card-body">
-    <div class="d-flex justify-content-between">
-     <p class="h4"><%= icon "fa", "user" %> Chef <%= chef.user.username %></p>
+    <div class="d-flex justify-content-between my-3">
+     <p class="h4"><strong><%= icon "fa", "user" %> Chef <%= chef.user.username %></strong></p>
       <%= cl_image_tag(
         chef.user.photo.key,
         gravity: "face",
@@ -11,7 +11,7 @@
         class: "avatar-large bleeding-avatar"
       ) %>
     </div>
-    <ul class="list-unstyled">
+    <ul class="list-unstyled mb-3">
       <li><%= icon "fa", "utensils" %> <%= @cooking_session.chef.bio %></li>
       <br>
       <%# Chef experience added manually instead of coding from "(chef model)created_at" %>
