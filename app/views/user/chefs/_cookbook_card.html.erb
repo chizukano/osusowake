@@ -4,7 +4,7 @@
     <% chef.meals.each do |meal| %>
       <div class="col-sm-4 col-lg-2">
         <div class="card overflow-hidden mb-3">
-          <%= cl_image_tag meal.photo.key, class: "card-img img-fluid", height:300, width:300, crop: :fill %>
+          <%= cl_image_tag meal.photo.key, class: "card-img img-fluid", height:194, width:194, crop: :fill %>
           <div class="card-image-info d-flex flex-column p-3">
             <h5 class="card-title flex-grow-1"><%= meal.name %></h5>
             <%= link_to new_user_chef_cooking_session_path, class:"mb-0 text-end small text-decoration-none text-white" do %>
