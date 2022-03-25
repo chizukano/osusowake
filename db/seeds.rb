@@ -114,7 +114,7 @@ end
 puts "---done---"
 
 puts "---creating fake near future cooking sessions---"
-meals[7..13].each do |meal|
+meals[7..14].each do |meal|
   chef = meal.chef
   cooking_sessions << CookingSession.create!(
     max_portions: rand(2..6),
@@ -130,7 +130,7 @@ end
 puts "---done---"
 
 puts "---creating fake future cooking sessions---"
-meals[14..19].each do |meal|
+meals[15..19].each do |meal|
   chef = meal.chef
   cooking_sessions << CookingSession.create!(
     max_portions: rand(2..6),
@@ -143,9 +143,6 @@ meals[14..19].each do |meal|
     streaming: false
   )
 end
-
-cooking_sessions.first.update(streaming: true)
-cooking_sessions.last.update(streaming: true)
 
 puts "---done---"
 
