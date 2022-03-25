@@ -28,8 +28,7 @@ chefs_address = [
   "Tapachula 88, Roma Norte, Mexico City, CDMX",
   "Avenida Tamaulipas 30, La Condesa, Mexico City, CDMX",
   "Puebla 77 Roma Norte, Mexico City, CDMX",
-  "Culiacan 26, Hipódromo, Mexico City, CDMX",
-  "Zacatecas 126, Roma Nte., Cuauhtémoc, Mexico City, CDMX"
+  "Culiacan 26, Hipódromo, Mexico City, CDMX"
 ]
 chefs_address_index = 0
 chefs_bio = ["I have been cooking since I was little. Cooking and sharing is my passion!",
@@ -40,7 +39,7 @@ chefs_bio = ["I have been cooking since I was little. Cooking and sharing is my 
 
 chefs_channel = ["PlantandGather"]
 
-users[0..7].each do |user|
+users[0..6].each do |user|
   chefs << Chef.create!(
     address: chefs_address[(chefs_address_index += 1) % chefs_address.size],
     user: user,
