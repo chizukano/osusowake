@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
-  <div class="container-fluid">
+  <div class="container-fluid my-2">
       <%= link_to root_path, class: "navbar-brand d-flex flex-row mx-2" do %>
         <%= image_tag "folk-logo-white.png", alt: "osusowake", width:40, height: 40, class: "m-1" %>
         <h2 class="text-white m-2"><strong>OSUSOWAKE</strong></h2>
@@ -11,22 +11,22 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse my-2" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <%= link_to "What is OSUSOWAKE?", "/", class: "btn btn-success m-2" %>
+          <%= link_to "What is OSUSOWAKE?", "/", class: "btn btn-success" %>
         </li>
         <li class="nav-item">
-          <%= link_to "How it works", "/", class: "btn btn-success m-2" %>
+          <%= link_to "How it works", "/", class: "btn btn-success" %>
         </li>
         <% if user_signed_in? %>
           <% if current_user.chef.present? %>
             <li class="nav-item me-2">
-              <%= link_to "Chef's Table", "/user/chef/", class: "btn btn-success m-2" %>
+              <%= link_to "Chef's Table", "/user/chef/", class: "btn btn-success" %>
             </li>
           <% else %>
             <li class="nav-item me-2">
-              <%= link_to "Become a Chef!", "/user/chef/new", class: "btn btn-success m-2" %>
+              <%= link_to "Become a Chef!", "/user/chef/new", class: "btn btn-success" %>
             </li>
           <% end %>
             <li class="nav-item dropdown">
