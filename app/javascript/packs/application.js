@@ -16,5 +16,5 @@ import "controllers"
 import "bootstrap"
 
 import flatpickr from "flatpickr"
-import "flatpickr/dist/flatpickr.min.css"
+import "flatpickr/dist/flatpickr.css"
 flatpickr(".datepicker", {})
