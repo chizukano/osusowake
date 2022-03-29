@@ -1,8 +1,8 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
-  <div class="container-fluid my-2">
-      <%= link_to root_path, class: "navbar-brand d-flex flex-row mx-2" do %>
-        <%= image_tag "folk-logo-white.png", alt: "osusowake", width:40, height: 40, class: "m-1" %>
-        <h2 class="text-white m-2"><strong>OSUSOWAKE</strong></h2>
+  <div class="container-fluid mt-3">
+      <%= link_to root_path, class: "navbar-brand d-flex flex-row" do %>
+        <%= image_tag "folk-logo-white.png", alt: "osusowake", width:40, height: 40, class: "mx-3" %>
+        <h2 class="text-white"><strong>OSUSOWAKE</strong></h2>
       <% end %>
 
     <%= render "shared/refine_location" if action_name == "index" %>
@@ -11,7 +11,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse my-2" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
           <%= link_to "What is OSUSOWAKE?", "/", class: "btn btn-success" %>
