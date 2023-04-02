@@ -138,17 +138,32 @@ meals[11..16].each do |meal|
     address: chef.address,
     longitude: chef.longitude,
     latitude: chef.latitude,
-    start_at: Time.current,
+    start_at: Time.current + rand(3..15),
     end_at: Time.current + rand(16..30).hours,
     meal: meal,
     streaming: false
   )
 end
+puts "---done---"
 
+puts "---creating fake future cooking sessions that start in a few days---"
+meals[0..16].each do |meal|
+  chef = meal.chef
+  cooking_sessions << CookingSession.create!(
+    max_portions: rand(3..6),
+    address: chef.address,
+    longitude: chef.longitude,
+    latitude: chef.latitude,
+    start_at: Time.current + rand(3..5).days,
+    end_at: Time.current + rand(2..10).days,
+    meal: meal,
+    streaming: false
+  )
+end
 puts "---done---"
 
 puts "---creating fake reservations---"
-10.times do
+15.times do
   Reservation.create!(
     portion_count: 1,
     user: users.sample,
